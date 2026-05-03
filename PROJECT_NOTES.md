@@ -18,18 +18,135 @@ The owner plans to **continue editing this site from a remote Linux dev containe
 
 ### To resume on the remote dev container
 
+This section is the *only thing* you need to read end-to-end before the next agent (or you) starts on a fresh remote machine. Everything else in PROJECT_NOTES.md is reference.
+
+#### 0. Server choice
+
+Either of the user's remote servers works. Jekyll uses **0 GPU**, ~200 MB RAM, and ~15 s of single-thread CPU per build. It does not contend for the same resources as ML workloads from other tenants. The only practical risk on a "noisy" server is interactive lag in code-server — not data loss (git is the safety net) and not build correctness (deterministic, depends only on the source tree). If running `jekyll serve --watch` for an extended session, wrap it in `tmux` or `screen` so an SSH disconnect doesn't kill it.
+
+**Never push from two environments simultaneously to the same branch.** Pick one as the active dev environment and use the other only after a `git pull`.
+
+#### 1. Get the code
+
 ```bash
+cd ~/projects   # or wherever you prefer inside the container
 git clone https://github.com/yh-v5/yh-v5.github.io.git
 cd yh-v5.github.io
-
-# Path A (recommended — al-folio's official path):
-docker compose up
-# → http://localhost:8080
-
-# Path B (if avoiding nested Docker):
-bundle install            # needs ruby-dev + node + imagemagick + poppler-utils on host
-bundle exec jekyll serve  # → http://localhost:4000
 ```
+
+If you bind-mount a host directory into the container, verify the cloned dir is owned by your container user (`ls -la`). UID/GID mismatches give "permission denied" on later edits; fix with `chown -R $(id -u):$(id -g) .` or set the container's `PUID`/`PGID` env vars to match the host UID.
+
+#### 2. Identity + push auth (one-time per environment)
+
+```bash
+git config --global user.name "Yeong Hwan Oh"
+git config --global user.email "yh991111@gmail.com"
+git config --global init.defaultBranch main
+git config --global core.autocrlf input    # harmless on Linux, important if container ever sees Windows-line-ending files
+git config --global pull.rebase false
+
+# Choose ONE of the two auth methods below.
+```
+
+**Auth option A — HTTPS + Personal Access Token (simplest, recommended for code-server containers).**
+
+Generate a `repo`-scope classic PAT at https://github.com/settings/tokens/new (90-day expiry is reasonable). Then in the container:
+
+```bash
+git config --global credential.helper store
+git push   # or git pull — first network op prompts:
+           #   Username: yh-v5
+           #   Password: <paste the PAT — NOT your GitHub password>
+# Subsequent pushes/pulls reuse the stored credentials.
+```
+
+The token lives in plaintext at `~/.git-credentials`. Make sure that path is on a persistent volume (it usually is — code-server typically persists `$HOME`). When the PAT expires, just regenerate and re-prompt: `rm ~/.git-credentials` then push again.
+
+**Auth option B — SSH key.** No token expiry, fewer plaintext secrets, but requires you to keep `~/.ssh/id_ed25519` on a persistent volume.
+
+```bash
+ssh-keygen -t ed25519 -C "yh991111@gmail.com" -f ~/.ssh/id_ed25519 -N ''
+cat ~/.ssh/id_ed25519.pub      # copy the single line of output
+# → paste at https://github.com/settings/ssh/new
+
+cd yh-v5.github.io
+git remote set-url origin git@github.com:yh-v5/yh-v5.github.io.git
+git pull && git push
+```
+
+#### 3. Build environment
+
+Two paths. Path A is what al-folio officially supports and "Just Works"; Path B is what to do if you don't want a nested Docker.
+
+**Path A — al-folio's own Docker (recommended on a host that already runs Docker).**
+
+```bash
+docker compose up         # standard, ~400 MB image
+# or:
+docker compose -f docker-compose-slim.yml up    # < 100 MB, identical functionality
+
+# Site at http://localhost:8080 (with livereload at :35729).
+# Initial pull is the only slow part; subsequent ups are instant.
+```
+
+This image bundles a known-good Ruby + Node + ImageMagick + Poppler combination, so **none of the Gemfile pins this repo carries (activesupport ~> 7.1, jekyll-sass-converter ~> 3.0, sass-embedded < 1.79) actually constrain anything inside the container**. They only mattered on the WSL Ruby-3.0.2 environment used for the bootstrap. You can ignore them.
+
+**Path B — install into the existing code-server container directly.**
+
+System packages (sudo, one-time):
+```bash
+sudo apt update && sudo apt install -y \
+  ruby-dev bundler nodejs npm \
+  poppler-utils imagemagick \
+  build-essential
+```
+
+Note the `nodejs` package — without a JavaScript runtime, `jekyll-terser` raises `Could not find a JavaScript runtime` exception per JS file during build. Build still completes (assets ship un-minified) but the warning spam is annoying. The package name varies (`nodejs` on Debian/Ubuntu, may need `nodejs-legacy` on older bases).
+
+Per-project gems (no sudo):
+```bash
+cd yh-v5.github.io
+bundle config set --local path vendor/bundle
+bundle install
+bundle exec jekyll serve --host 0.0.0.0 --port 4000
+# → http://localhost:4000 — verify the page renders
+```
+
+The `--host 0.0.0.0` is necessary if you want the site reachable from outside the container (i.e., your browser via code-server's port forwarding, or via an SSH tunnel). Inside-container-only access can use the default `127.0.0.1`.
+
+If your container's Ruby is **3.1 or higher**, you can safely loosen the `sass-embedded` cap and revert the `_themes.scss` patch:
+```bash
+# In Gemfile, change `gem 'sass-embedded', '< 1.79'` to:
+gem 'sass-embedded', '>= 1.79'
+# Then revert the rgba(...) lines in _sass/_themes.scss back to color.channel(...).
+bundle update sass-embedded
+```
+Not required — the patched version compiles identically. But it brings the repo back into sync with upstream al-folio for future merges.
+
+#### 4. Local preview from outside the container
+
+If the container exposes port 4000 to its host and the host is reachable, just hit `http://<host>:4000`. Otherwise, two options:
+
+```bash
+# From your laptop, SSH tunnel:
+ssh -L 4000:localhost:4000 <server-alias>
+# Then http://localhost:4000 in your browser.
+
+# Or, if code-server itself is exposed: code-server's "Forward a Port" UI does it for you.
+```
+
+#### 5. The everyday loop
+
+```bash
+# inside the container, in yh-v5.github.io/
+git pull                                  # always before starting work
+# ...edit files...
+bundle exec jekyll build                  # quick check (~15 s); or use serve --watch for live
+git add -A && git commit -m "..."         # commit early, commit often
+git push                                  # triggers .github/workflows/deploy.yml — site refreshes in ~4 min
+```
+
+Watch the **Deploy site** workflow at https://github.com/yh-v5/yh-v5.github.io/actions after each push. The other workflows (Render a CV, Prettier, the built-in pages-build-deployment) can fail without affecting your live site — see the "Known build issues" section.
 
 ---
 
