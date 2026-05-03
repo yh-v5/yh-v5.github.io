@@ -8,6 +8,21 @@ gem 'jekyll'
 # on Ruby 3.x. Required by _plugins/google-scholar-citations.rb.
 gem 'activesupport', '~> 7.1'
 
+# Force jekyll-sass-converter v3, which uses sass-embedded (Dart Sass).
+# v2 uses sassc/libsass which is deprecated and does NOT support the `@use`
+# rule that al-folio's _sass/*.scss files depend on. With v2 the SCSS is
+# emitted as-is into _site/assets/css/main.css and no theme styles apply.
+gem 'jekyll-sass-converter', '~> 3.0'
+# al-folio's _sass/_themes.scss uses `color.channel(...)` which was added in
+# Dart Sass 1.79 (2024-10). The sass-embedded transitive constraint from
+# jekyll-sass-converter 3.0.0 (`~> 1.54`) lets bundler pick anything from
+# 1.54 to <2.0, but it can resolve to an older version. Pin >= 1.79.
+# sass-embedded 1.79+ requires Ruby >= 3.1; this WSL has 3.0.2. Cap below.
+# The al-folio code uses `color.channel(...)` which was added in 1.79; we
+# patch _sass/_themes.scss to use plain rgba() instead so the < 1.79 cap
+# doesn't break the build.
+gem 'sass-embedded', '< 1.79'
+
 # Core plugins that directly affect site building
 group :jekyll_plugins do
     gem 'jekyll-3rd-party-libraries'

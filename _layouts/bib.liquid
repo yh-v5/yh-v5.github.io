@@ -1,7 +1,12 @@
 ---
 ---
 <div class="row">
-  {% if site.enable_publication_thumbnails %}
+  {%- comment -%}
+    Always render the abbr-badge column so venue tags (e.g. DATE, ISLPED) are
+    visible even when publication thumbnails are disabled. The preview image
+    inside the same column is still gated on enable_publication_thumbnails.
+  {%- endcomment -%}
+  {% if entry.abbr or site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
         {%- if site.data.venues[entry.abbr] -%}
@@ -25,7 +30,7 @@
           <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
         {% endif %}
       {% endif %}
-      {% if entry.preview %}
+      {% if site.enable_publication_thumbnails and entry.preview %}
         {% if entry.preview contains '://' %}
           <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
         {% else %}
@@ -46,7 +51,7 @@
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+  <div id="{{ entry.key }}" class="{% if entry.abbr or site.enable_publication_thumbnails %}col-sm-10{% else %}col-sm-12{% endif %}">
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->

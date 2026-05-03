@@ -1,44 +1,51 @@
 ---
 ---
 
-# ── Published / Accepted ────────────────────────────────────────────────────────
+# Author asterisk convention used here:
+#   *  equal contribution / co-first author
+#   †  corresponding author
+# These are added directly into BibTeX `last name` fields and rendered as
+# superscripts by _layouts/bib.liquid (see its regex_replace).
 
-@inproceedings{kang2025memhd,
-  abbr        = {DATE},
-  bibtex_show = {true},
-  selected    = {true},
-  title       = {{MEMHD}: Memory-Efficient Multi-Centroid Hyperdimensional Computing for Fully-Utilized In-Memory Computing Architectures},
-  author      = {Kang, Do Yeong and Oh, Yeong Hwan and Hwang, Chanwook and Kim, Jinhee and Jeon, Kang Eun and Ko, Jong Hwan},
-  booktitle   = {Proceedings of the 2025 Design, Automation \& Test in Europe Conference \& Exhibition (DATE)},
-  year        = {2025},
-  abstract    = {A memory-efficient multi-centroid hyperdimensional computing framework that replaces single-vector-per-class with multiple class vectors, achieving full IMC array utilization and enabling single-cycle inference through clustering-based initialization and quantization-aware training.}
-}
-
-# ── Under Review ────────────────────────────────────────────────────────────────
-
-@unpublished{kang_oh_dipmemhd,
-  abbr            = {IoT-J},
-  bibtex_show     = {true},
-  selected        = {true},
-  title           = {Multi-Centroid Hyperdimensional Computing for Compact {IMC} Arrays via Dimension Pruning},
-  author          = {Kang, Do Yeong and Oh, Yeong Hwan and Hwang, Chanwook and Kim, Jinhee and Jeon, Kang Eun and Ko, Jong Hwan},
-  journal         = {IEEE Internet of Things Journal},
-  year            = {2026},
-  note            = {Under review},
-  annotation      = {* D. Y. Kang and Y. H. Oh contributed equally as co-first authors.},
-  abstract        = {This work presents MEMHD, a memory-efficient multi-centroid HDC framework, together with DiP-MEMHD that prunes dimensions while preserving critical information through calibration and variance-based weighting. MEMHD achieves 10.60x better memory efficiency at comparable accuracy and 14.61\% higher accuracy with the same memory usage compared to existing binary HDC baselines. DiP-MEMHD shows 2.47\% higher accuracy than existing pruning metrics and 22.4\% higher accuracy than state-of-the-art binary HDC models on compact IMC arrays (64x64, 128x128) with 6--8x better energy efficiency, enabling always-on IoT classification on compact edge devices.},
-  additional_info = {. *Co-first author with Do Yeong Kang.*}
-}
+# ── 2026 ────────────────────────────────────────────────────────────────────────
 
 @unpublished{oh2026hyperspace,
   abbr        = {ISLPED},
   bibtex_show = {true},
   selected    = {true},
   title       = {{HyperSPACE}: Sparse-Adder-Compatible Encoding for Efficient Hyperdimensional Computing on Digital {CIM} Arrays},
-  author      = {Oh, Yeong Hwan and others},
+  author      = {Oh, Yeong Hwan and Kang, Do Yeong and Park, Juhong and Hwang, Chanwook and Jeon†, Kang Eun and Ko†, Jong Hwan},
   journal     = {ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED)},
   year        = {2026},
   note        = {Under review},
+  annotation  = {† Co-corresponding authors: K. E. Jeon and J. H. Ko.},
   abstract    = {An algorithm--hardware co-design that makes HDC encoding fully compatible with sparse adder trees (SATs) on digital SRAM-CIM arrays. Replacing XOR-binding with AND-binding compounds sparsity; sparsity-tuned projection vectors push bound vector sparsity above 0.99; adaptive binary quantization compensates for the non-uniform output statistics that AND-binding induces. On 128x64 SRAM-CIM arrays, HyperSPACE reduces encoding energy by up to 13.03x while improving classification accuracy by up to 3.82\% across four benchmarks.},
   keywords    = {Hyperdimensional Computing, In-Memory Computing, Sparse Adder Trees, Approximate Computing}
+}
+
+@unpublished{kang_oh_dipmemhd,
+  abbr        = {IoT-J},
+  bibtex_show = {true},
+  selected    = {true},
+  title       = {Multi-Centroid Hyperdimensional Computing for Compact {IMC} Arrays via Dimension Pruning},
+  author      = {Kang*, Do Yeong and Oh*, Yeong Hwan and Hwang, Chanwook and Kim, Jinhee and Jeon†, Kang Eun and Ko†, Jong Hwan},
+  journal     = {IEEE Internet of Things Journal},
+  year        = {2026},
+  note        = {Under review},
+  annotation  = {* D. Y. Kang and Y. H. Oh contributed equally as co-first authors. † Co-corresponding authors: K. E. Jeon and J. H. Ko.},
+  abstract    = {This work presents MEMHD, a memory-efficient multi-centroid HDC framework, together with DiP-MEMHD that prunes dimensions while preserving critical information through calibration and variance-based weighting. MEMHD achieves 10.60x better memory efficiency at comparable accuracy and 14.61\% higher accuracy with the same memory usage compared to existing binary HDC baselines. DiP-MEMHD shows 2.47\% higher accuracy than existing pruning metrics and 22.4\% higher accuracy than state-of-the-art binary HDC models on compact IMC arrays (64x64, 128x128) with 6--8x better energy efficiency, enabling always-on IoT classification on compact edge devices.}
+}
+
+# ── 2025 ────────────────────────────────────────────────────────────────────────
+
+@inproceedings{kang2025memhd,
+  abbr        = {DATE},
+  bibtex_show = {true},
+  selected    = {true},
+  title       = {{MEMHD}: Memory-Efficient Multi-Centroid Hyperdimensional Computing for Fully-Utilized In-Memory Computing Architectures},
+  author      = {Kang, Do Yeong and Oh, Yeong Hwan and Hwang, Chanwook and Kim, Jinhee and Jeon†, Kang Eun and Ko†, Jong Hwan},
+  booktitle   = {Proceedings of the 2025 Design, Automation \& Test in Europe Conference \& Exhibition (DATE)},
+  year        = {2025},
+  annotation  = {† Co-corresponding authors: K. E. Jeon and J. H. Ko.},
+  abstract    = {A memory-efficient multi-centroid hyperdimensional computing framework that replaces single-vector-per-class with multiple class vectors, achieving full IMC array utilization and enabling single-cycle inference through clustering-based initialization and quantization-aware training.}
 }
