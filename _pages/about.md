@@ -2,33 +2,37 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Combined M.S. and Ph.D. student · <a href="https://iris.skku.edu/" target="_blank">IRIS Lab</a> · Department of Electrical and Computer Engineering · <a href="https://www.skku.edu/" target="_blank">Sungkyunkwan University</a>
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>📍 Suwon, Republic of Korea</p>
+    <p>📧 yh991111 [at] g.skku.edu</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: false
+  scrollable: true
+  limit: 5
 
 latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  enabled: false
+  scrollable: true
+  limit: 3
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a Combined M.S. and Ph.D. student at the [IRIS Lab](https://iris.skku.edu/), Department of Electrical and Computer Engineering, [Sungkyunkwan University](https://www.skku.edu/), advised by Prof. Jong Hwan Ko.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My research centers on **sparse representations for energy-efficient on-device learning**. I work along two complementary directions:
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+- **Hyperdimensional computing on in-memory computing arrays.** I design algorithm–hardware co-designs that push the sparsity of HDC bound vectors above 0.99 so that the popcount stage — which dominates encoding energy — can run on simplified sparse-adder trees inside SRAM-CIM macros. Recent work targets order-of-magnitude energy reductions for edge classification while preserving accuracy.
+- **Dynamic sparse training and machine unlearning at ultra-high sparsity.** At 99% sparsity, the surviving 1% of weights jointly serve both retain and forget data, making weight-only unlearning fundamentally incomplete. I am developing topology-aware unlearning methods that edit the *connectivity* of DST-trained sparse models, not just their weights, while preserving structural constraints such as constant fan-in.
+
+Together these threads share a common premise: in modern AI systems, *what is missing* often carries as much information as *what remains*, and engineering that asymmetry is the path to deployable intelligence at the edge.
+
+I welcome collaboration and conversation around HDC, sparse training, in-memory computing, and approximate computing for ML. The fastest way to reach me is by email.

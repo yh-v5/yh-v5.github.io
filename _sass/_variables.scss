@@ -18,8 +18,14 @@ $green-color-lime: #b7d12a !default;
 $green-color-dark: #009f06 !default;
 $green-color-light: #ddffdd !default;
 $green-color-bright: #11d68b !default;
+// Default al-folio purple kept available for compatibility, but the site's
+// theme color is overridden in _themes.scss to a calmer slate-blue.
 $purple-color: #b509ac !default;
 $light-purple-color: color.adjust($purple-color, $lightness: 25%);
+$slate-color: #334155 !default;        // light-mode theme color (slate-700)
+$slate-color-hover: #1e293b !default;  // slate-800 for hover
+$sky-color: #7dd3fc !default;          // dark-mode theme accent (sky-300)
+$sky-color-hover: #bae6fd !default;    // sky-200 hover
 $pink-color: #f92080 !default;
 $pink-color-light: #ffdddd !default;
 $yellow-color: #efcc00 !default;
@@ -34,7 +40,7 @@ $black-color: #000000 !default;
 
 // Theme colors
 
-$code-bg-color-light: rgba($purple-color, 0.05);
+$code-bg-color-light: rgba($slate-color, 0.06);
 $code-bg-color-dark: #2c3237 !default;
 
 // Font awesome location

@@ -2,6 +2,12 @@ source 'https://rubygems.org'
 
 gem 'jekyll'
 
+# Pin activesupport to a Ruby-3-compatible version. Without this, bundler can
+# resolve to ancient activesupport (e.g. 3.1.12 from 2011) via transitive
+# constraints, which raises `circular argument reference - now (SyntaxError)`
+# on Ruby 3.x. Required by _plugins/google-scholar-citations.rb.
+gem 'activesupport', '~> 7.1'
+
 # Core plugins that directly affect site building
 group :jekyll_plugins do
     gem 'jekyll-3rd-party-libraries'
