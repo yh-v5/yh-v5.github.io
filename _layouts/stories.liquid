@@ -30,7 +30,9 @@ layout: swiss
           <span class="st-title">{{ s.title }}</span>
           <span class="st-desc">{{ s.description }}</span>
         </span>
-        <span class="st-meta mono">{{ chapters }} chapters / ~{{ mins }} min</span>
+        <span class="st-meta mono">
+          {%- if chapters > 0 %}{{ chapters }} chapters / {% endif %}~{{ mins }} min
+        </span>
         <span class="st-year mono">{{ s.year }}</span>
         <span class="st-go mono">Read →</span>
       </a>
