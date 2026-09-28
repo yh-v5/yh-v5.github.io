@@ -7,7 +7,7 @@ layout: swiss
 
 <section class="hero" aria-labelledby="hero-name">
   <div class="hero-top g mono">
-    <span class="l"><span class="sect">§</span> 00 — Index</span>
+    <span class="l"><span class="sect">§</span> 00 / Index</span>
     <span class="r">Research portfolio / {{ site.time | date: '%Y' }}</span>
   </div>
 
@@ -32,8 +32,8 @@ layout: swiss
       <img
         src="{{ '/assets/img/' | append: page.photo | relative_url }}"
         alt="Portrait of {{ site.first_name }} {{ site.last_name }}"
-        width="600"
-        height="600"
+        width="800"
+        height="800"
       >
       <figcaption class="mono"><span>Fig. A</span><span>Portrait</span></figcaption>
     </figure>
@@ -65,7 +65,7 @@ layout: swiss
   <header class="sec-h g">
     <span class="sec-no mono"><span class="sect">§</span> 02</span>
     <h2 class="sec-t" id="s2">Selected works</h2>
-    <span class="sec-aux mono">{{ first_no }} — {{ last_no }}</span>
+    <span class="sec-aux mono">{{ first_no }}–{{ last_no }}</span>
   </header>
   {% bibliography -T work_row --group_by none --query @*[selected=true]* %}
   <a class="more mono" href="{{ '/publications/' | relative_url }}">All works, with abstracts and BibTeX →</a>
@@ -101,7 +101,15 @@ layout: swiss
           </dd>
         </div>
       {%- endif %}
-      {%- if site.data.socials.orcid_id %}
+      {%- comment -%} Google Scholar takes ORCID's place once scholar_userid is set in _data/socials.yml {%- endcomment -%}
+      {%- if site.data.socials.scholar_userid %}
+        <div class="cap-row">
+          <dt>Scholar</dt>
+          <dd>
+            <a class="u-link" href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">Google Scholar</a>
+          </dd>
+        </div>
+      {%- elsif site.data.socials.orcid_id %}
         <div class="cap-row">
           <dt>ORCID</dt>
           <dd>
@@ -116,14 +124,6 @@ layout: swiss
             <a class="u-link" href="https://github.com/{{ site.data.socials.github_username }}">
               {{- site.data.socials.github_username -}}
             </a>
-          </dd>
-        </div>
-      {%- endif %}
-      {%- if site.data.socials.scholar_userid %}
-        <div class="cap-row">
-          <dt>Scholar</dt>
-          <dd>
-            <a class="u-link" href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">Google Scholar</a>
           </dd>
         </div>
       {%- endif %}

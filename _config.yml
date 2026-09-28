@@ -9,7 +9,7 @@ last_name: Oh
 contact_note: >
   Email is the best way to reach me.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Personal academic website of Yeong Hwan Oh — Combined M.S. and Ph.D. student at IRIS Lab,
+  Personal academic website of Yeong Hwan Oh, Combined M.S. and Ph.D. student at IRIS Lab,
   Sungkyunkwan University. Research on sparse representations for energy-efficient AI:
   hyperdimensional computing on in-memory computing arrays, dynamic sparse training, and
   machine unlearning at ultra-high sparsity.

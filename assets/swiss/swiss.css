@@ -1023,22 +1023,18 @@ dd {
   gap: 8px;
 }
 .st-title {
-  font-family: var(--f-ko);
-  font-weight: 800;
+  font-family: var(--f-tight);
+  font-weight: 700;
   font-size: clamp(28px, 3.2vw, 46px);
-  line-height: 1.1;
-  letter-spacing: -0.035em;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
   transition: color 0.15s;
 }
-.st-sub {
-  font-family: var(--f-ko);
+.st-desc {
   font-size: 16px;
+  line-height: 1.45;
   color: var(--ink-2);
-}
-.st-open {
-  font-family: var(--f-ko);
-  font-size: 14.5px;
-  color: var(--ink-3);
+  max-width: 38em;
 }
 .st-meta {
   grid-column: 9 / span 2;
@@ -1077,19 +1073,21 @@ dd {
   grid-column: 4 / span 9;
 }
 .story-title {
-  font-family: var(--f-ko);
-  font-weight: 800;
+  font-family: var(--f-tight);
+  font-weight: 700;
   font-size: clamp(40px, 5.6vw, 92px);
-  line-height: 1.04;
+  line-height: 1.02;
   letter-spacing: -0.045em;
-  word-break: keep-all;
 }
 .story-sub {
-  margin-top: 16px;
-  font-family: var(--f-ko);
-  font-size: clamp(17px, 1.6vw, 21px);
-  line-height: 1.4;
+  margin-top: 18px;
+  font-family: var(--f-tight);
+  font-weight: 500;
+  font-size: clamp(18px, 1.75vw, 23px);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
   color: var(--ink-2);
+  max-width: 34em;
 }
 .story-wrap {
   margin-top: clamp(40px, 5vw, 72px);
@@ -1114,10 +1112,10 @@ dd {
   display: none;
 }
 .story-toc summary::after {
-  content: " +";
+  content: " ↓";
 }
 .story-toc details[open] summary::after {
-  content: " −";
+  content: " ↑";
 }
 .story-toc ol {
   list-style: none;
@@ -1164,6 +1162,20 @@ dd {
 .story-body > h2:first-child {
   margin-top: 0;
 }
+/* series label inside a chapter title, e.g. 〈다른 쪽 이야기〉 첫 번째 */
+.story-body h2 small {
+  display: block;
+  margin-top: 6px;
+  font-weight: 500;
+  font-size: 0.6em;
+  letter-spacing: 0;
+  color: var(--ink-3);
+}
+.story-toc li a small {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-3);
+}
 .story-body hr {
   height: auto;
   margin: 2.6em 0;
@@ -1171,9 +1183,7 @@ dd {
   text-align: center;
 }
 .story-body hr::after {
-  content: "· · ·";
-  font-family: var(--f-mono);
-  letter-spacing: 0.5em;
+  content: "◇";
   color: var(--ink-3);
 }
 /* a chapter heading already draws a rule, so drop the break right before it */

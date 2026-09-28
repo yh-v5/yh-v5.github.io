@@ -23,10 +23,10 @@ caption:
     value: Suwon, Republic of Korea
 
 timeline:
-  - years: 2024 – 2025
+  - years: 2024–2025
     topic: Hyperdimensional computing on in-memory computing arrays
-    note: AISP · DATE · ISLPED · IoT-J
-  - years: 2026 –
+    note: AISP, DATE, ISLPED, IoT-J
+  - years: 2026–now
     topic: Dynamic sparse training and machine unlearning at ultra-high sparsity
     note: Ongoing
 ---

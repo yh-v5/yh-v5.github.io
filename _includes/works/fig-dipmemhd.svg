@@ -12,7 +12,7 @@
 <line class="bp-ln" x1="24" y1="507" x2="24" y2="525"/>
 <line class="bp-ln" x1="927" y1="516" x2="945" y2="516"/>
 <line class="bp-ln" x1="936" y1="507" x2="936" y2="525"/>
-<text class="bp-tb" x="44" y="56">FIG. 02 — DIMENSION PRUNING</text>
+<text class="bp-tb" x="44" y="56">FIG. 02 / DIMENSION PRUNING</text>
 <rect class="bp-ln" x="636" y="468" width="300" height="48"/>
 <line class="bp-ln" x1="716" y1="468" x2="716" y2="516"/>
 <line class="bp-ln" x1="856" y1="468" x2="856" y2="516"/>
@@ -162,9 +162,9 @@
 <rect class="bp-off" x="525.5" y="434" width="12" height="14"/>
 <rect class="bp-off" x="562.5" y="439" width="12" height="9"/>
 <rect class="bp-off" x="599.5" y="442" width="12" height="6"/>
-<text class="bp-t3" x="330" y="464">SIMILARITY · ONE SEARCH CYCLE → ARGMAX</text>
+<text class="bp-t3" x="330" y="464">SIMILARITY IN ONE SEARCH CYCLE → ARGMAX</text>
 <text class="bp-t" x="720" y="118">COMPACT IMC</text>
-<text class="bp-t2" x="720" y="136">64 × 64 · 128 × 128</text>
+<text class="bp-t2" x="720" y="136">64 × 64 / 128 × 128</text>
 <text class="bp-t" x="720" y="184">+22.4% ACC.</text>
 <text class="bp-t2" x="720" y="202">VS. BINARY HDC</text>
 <text class="bp-t" x="720" y="250">6–8× ENERGY</text>

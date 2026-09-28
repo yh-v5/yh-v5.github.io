@@ -12,7 +12,7 @@
 <line class="bp-ln" x1="24" y1="507" x2="24" y2="525"/>
 <line class="bp-ln" x1="927" y1="516" x2="945" y2="516"/>
 <line class="bp-ln" x1="936" y1="507" x2="936" y2="525"/>
-<text class="bp-tb" x="44" y="56">FIG. 03 — ARRAY UTILIZATION</text>
+<text class="bp-tb" x="44" y="56">FIG. 03 / ARRAY UTILIZATION</text>
 <rect class="bp-ln" x="636" y="468" width="300" height="48"/>
 <line class="bp-ln" x1="716" y1="468" x2="716" y2="516"/>
 <line class="bp-ln" x1="856" y1="468" x2="856" y2="516"/>
@@ -23,7 +23,7 @@
 <text class="bp-t" x="724" y="508">MEMHD</text>
 <text class="bp-t3" x="864" y="484">SCALE</text>
 <text class="bp-t" x="864" y="508">N.T.S.</text>
-<text class="bp-t" x="72" y="90">A · ONE VECTOR PER CLASS</text>
+<text class="bp-t" x="72" y="90">A / ONE VECTOR PER CLASS</text>
 <rect class="bp-t-a" x="72" y="124" width="30" height="30"/>
 <rect class="bp-t-a" x="72" y="159" width="30" height="30"/>
 <rect class="bp-t-a" x="72" y="194" width="30" height="30"/>
@@ -58,28 +58,24 @@
 <rect class="bp-idle" x="212" y="229" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="212" y="264" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="212" y="299" width="30" height="30" fill="url(#hatch-03)"/>
-<text class="bp-t2" x="227" y="114" text-anchor="middle">—</text>
 <rect class="bp-idle" x="247" y="124" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="247" y="159" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="247" y="194" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="247" y="229" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="247" y="264" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="247" y="299" width="30" height="30" fill="url(#hatch-03)"/>
-<text class="bp-t2" x="262" y="114" text-anchor="middle">—</text>
 <rect class="bp-idle" x="282" y="124" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="282" y="159" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="282" y="194" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="282" y="229" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="282" y="264" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="282" y="299" width="30" height="30" fill="url(#hatch-03)"/>
-<text class="bp-t2" x="297" y="114" text-anchor="middle">—</text>
 <rect class="bp-idle" x="317" y="124" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="317" y="159" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="317" y="194" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="317" y="229" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="317" y="264" width="30" height="30" fill="url(#hatch-03)"/>
 <rect class="bp-idle" x="317" y="299" width="30" height="30" fill="url(#hatch-03)"/>
-<text class="bp-t2" x="332" y="114" text-anchor="middle">—</text>
 <rect class="bp-ln" x="66" y="118" width="287" height="217"/>
 <rect class="bp-overflow" x="72" y="341" width="30" height="30"/>
 <rect class="bp-overflow" x="72" y="376" width="30" height="30"/>
@@ -96,9 +92,9 @@
 <line class="bp-dim" x1="72" y1="429" x2="347" y2="429"/>
 <line class="bp-dim" x1="72" y1="424" x2="72" y2="434"/>
 <line class="bp-dim" x1="347" y1="424" x2="347" y2="434"/>
-<rect class="bp-paper" x="124.8" y="421" width="169.4" height="16"/>
-<text class="bp-t2" x="209.5" y="433" text-anchor="middle">50% USED · ≥ 2 CYCLES</text>
-<text class="bp-t" x="520" y="90">B · MULTI-CENTROID (MEMHD)</text>
+<rect class="bp-paper" x="128.5" y="421" width="162" height="16"/>
+<text class="bp-t2" x="209.5" y="433" text-anchor="middle">50% USED, ≥ 2 CYCLES</text>
+<text class="bp-t" x="520" y="90">B / MULTI-CENTROID (MEMHD)</text>
 <rect class="bp-t-a" x="520" y="124" width="30" height="30"/>
 <rect class="bp-t-a" x="520" y="159" width="30" height="30"/>
 <rect class="bp-t-a" x="520" y="194" width="30" height="30"/>
@@ -159,7 +155,7 @@
 <line class="bp-dim" x1="520" y1="429" x2="795" y2="429"/>
 <line class="bp-dim" x1="520" y1="424" x2="520" y2="434"/>
 <line class="bp-dim" x1="795" y1="424" x2="795" y2="434"/>
-<rect class="bp-paper" x="580.2" y="421" width="154.6" height="16"/>
-<text class="bp-t2" x="657.5" y="433" text-anchor="middle">100% USED · 1 CYCLE</text>
-<text class="bp-tb" x="44" y="500">ACC. ↑ UP TO 13.69% AT EQUAL MEMORY  ·  MEMORY EFF. ↑ 13.25×</text>
+<rect class="bp-paper" x="583.9" y="421" width="147.2" height="16"/>
+<text class="bp-t2" x="657.5" y="433" text-anchor="middle">100% USED, 1 CYCLE</text>
+<text class="bp-tb" x="44" y="500">ACC. ↑ UP TO 13.69% AT EQUAL MEMORY  /  MEMORY EFF. ↑ 13.25×</text>
 </svg>
