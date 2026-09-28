@@ -237,6 +237,7 @@ Current stories: 01 "Your Resonance" (너의 울림, 2021), 02 "Dawn" (새벽, 2
 
 Gotchas:
 
+- No italics in stories: the importer drops emphasis, and `.story-body em` is set upright in case a hand-written file has some.
 - kramdown here has `hard_wrap: false`, so line breaks inside a paragraph are written as `<br>`. Scene-break paragraphs are a single `◇` with `{: .sep}`; `<hr>` is drawn as `◇` too.
 - `_stories/` is in `.prettierignore`: Prettier would rewrite whole-line `*italics*` to `_italics_`, and the importer's output is the source of truth.
 - The TOC is cut out of the rendered HTML (`split: '<h2 id="'` … `split: '">'`), so inline HTML in a chapter title must not carry attributes (plain `<small>` is fine).

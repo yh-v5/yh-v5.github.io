@@ -15,7 +15,8 @@ and story header); the export's h1 is kept only as `title_ko`. A first
 paragraph that is entirely italic (a subtitle) is dropped.
 Chapters (h2) get stable anchors (#ch-1, #ch-2, ...) for the table of contents.
 Line breaks inside a paragraph are kept as hard breaks, and paragraphs that are
-only a scene-break glyph (◇ etc.) are marked with the "sep" class.
+only a scene-break glyph (◇ etc.) are marked with the "sep" class. Italics
+(emphasis) are dropped: the stories are set without them.
 
 The site shows no em dashes (—) or middle dots (·). Separators in chapter
 titles are rewritten ("1 · 제목" -> "1. 제목", "제목 — 부제" -> "제목: 부제",
@@ -85,11 +86,11 @@ def escape_md(text):
 
 
 def inline(raw):
-    """Escape Markdown, restore italics, keep in-paragraph line breaks."""
+    """Escape Markdown, drop italics, keep in-paragraph line breaks."""
     lines = []
     for line in raw.strip().split("\n"):
         line = escape_md(line.strip())
-        line = line.replace("\x01", "*").replace("\x02", "*")
+        line = line.replace("\x01", "").replace("\x02", "")  # stories carry no italics
         # things that would start a block construct at the beginning of a line
         line = re.sub(r"^(\d+)\.(\s)", r"\1\\.\2", line)
         line = re.sub(r"^([-+#>=])", r"\\\1", line)
