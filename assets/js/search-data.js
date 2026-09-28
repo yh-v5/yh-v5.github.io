@@ -38,6 +38,11 @@ ninja.data = [{
           description: "In a universe with no questions left, a night-shift worker 550 AU from the Sun waits for the one night nothing is recorded.",
           section: "Stories",handler: () => {
               window.location.href = "/stories/saebyeok/";
+            },},{id: "stories-nlp",
+          title: 'NLP',
+          description: "A machine finally solves humor, and the boy who once copied down the class clown&#39;s jokes ends up feeding him every line.",
+          section: "Stories",handler: () => {
+              window.location.href = "/stories/nlp/";
             },},{id: "stories-the-last-digit",
           title: 'The Last Digit',
           description: "In a world that keeps time in floating point, an old reckoner finds that rounding error is the floor the mind stands on.",
