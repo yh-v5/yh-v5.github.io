@@ -1,0 +1,46 @@
+{%- assign works_url = '/publications/' -%}
+<header class="sh">
+  <div class="wrap g">
+    <a class="sh-brand" href="{{ '/' | relative_url }}">
+      <span>
+        {{- site.first_name }}
+        {{ site.last_name -}}
+      </span>
+      <span class="ko" lang="ko">오영환</span>
+    </a>
+    <span class="sh-meta mono">IRIS Lab — Sungkyunkwan Univ.</span>
+    <nav class="sh-nav mono" aria-label="Primary">
+      <a
+        href="{{ '/' | relative_url }}"
+        {% if page.url == '/' %}
+          aria-current="page"
+        {% endif %}
+        >Index</a
+      >
+      <a
+        href="{{ works_url | relative_url }}"
+        {% if page.url == works_url or page.entry %}
+          aria-current="page"
+        {% endif %}
+      >
+        Works
+      </a>
+      <a
+        href="{{ '/news/' | relative_url }}"
+        {% if page.url == '/news/' %}
+          aria-current="page"
+        {% endif %}
+        >News</a
+      >
+      <a href="{{ '/#contact' | relative_url }}">Contact</a>
+    </nav>
+    <div class="sh-tools mono">
+      <button type="button" class="tgl" data-toggle="grid" aria-pressed="false" title="Show the layout grid (G)">
+        <span class="tgl-box" aria-hidden="true"></span>Grid
+      </button>
+      <button type="button" class="tgl" data-toggle="theme" aria-pressed="false" title="Blueprint (dark) mode">
+        <span class="tgl-box" aria-hidden="true"></span>Blueprint
+      </button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,26 @@
+{%- comment -%}
+  Renders a BibTeX author array as "A, B, and C".
+  The owner is underlined; * and † markers in last names become superscripts.
+  Usage: {% include swiss/authors.liquid authors=entry.author_array %}
+{%- endcomment -%}
+{%- assign au = include.authors -%}
+{%- assign n = au | size -%}
+{%- for author in au -%}
+  {%- assign last_clean = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+  {%- assign marks = author.last | regex_replace: '[^*∗†‡§¶‖&^]', '' -%}
+  {%- assign is_self = false -%}
+  {%- if site.scholar.last_name contains last_clean and site.scholar.first_name contains author.first -%}
+    {%- assign is_self = true -%}
+  {%- endif -%}
+  {%- if forloop.first == false -%}
+    {%- if n > 2 -%},{%- endif %}
+    {% if forloop.last %}and {% endif -%}
+  {%- endif -%}
+  <span class="au{% if is_self %} au-self{% endif %}">
+    {{- author.first }}
+    {{ last_clean -}}
+  </span>
+  {%- if marks != '' -%}
+    <sup>{{ marks }}</sup>
+  {%- endif -%}
+{%- endfor -%}

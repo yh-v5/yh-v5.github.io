@@ -1,0 +1,19 @@
+{%- comment -%}
+  News rows, newest first. Usage: {% include swiss/news.liquid limit=5 %}
+{%- endcomment -%}
+{%- assign news = site.news | reverse -%}
+{%- assign lim = include.limit | default: news.size -%}
+<div class="news-list">
+  {%- for item in news limit: lim %}
+    <div class="news-row g">
+      <time class="news-date mono" datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%Y.%m.%d' }}</time>
+      <div class="news-text">
+        {%- if item.inline -%}
+          {{ item.content | remove: '<p>' | remove: '</p>' | emojify | strip }}
+        {%- else -%}
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor %}
+</div>

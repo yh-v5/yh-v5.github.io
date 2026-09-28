@@ -1,33 +1,32 @@
 ---
-layout: about
+layout: home
 title: about
 permalink: /
-subtitle: Combined M.S. and Ph.D. student · <a href="https://iris.skku.edu/" target="_blank">IRIS Lab</a> · Department of Electrical and Computer Engineering · <a href="https://www.skku.edu/" target="_blank">Sungkyunkwan University</a>
+name_ko: 오영환
+kicker: Sparse representations for energy-efficient AI
+place: Suwon, Republic of Korea
+photo: prof_pic.jpg
+news_limit: 5
 
-profile:
-  align: right
-  image: prof_pic.jpg
-  image_circular: false
-  more_info: >
-    <p>📍 Suwon, Republic of Korea</p>
-    <p>📧 yh991111 [at] g.skku.edu</p>
+caption:
+  - label: Role
+    value: Combined M.S. and Ph.D. student
+  - label: Lab
+    value: <a class="u-link" href="https://iris.skku.edu/">IRIS Lab</a>
+  - label: Department
+    value: Electrical and Computer Engineering
+  - label: Institution
+    value: <a class="u-link" href="https://www.skku.edu/">Sungkyunkwan University</a>
+  - label: Advisor
+    value: Prof. Jong Hwan Ko
 
-selected_papers: true
-social: true
-
-announcements:
-  enabled: true
-  scrollable: true
-  limit: 5
-
-latest_posts:
-  enabled: false
-  scrollable: true
-  limit: 3
+timeline:
+  - years: 2024 – 2025
+    topic: Hyperdimensional computing on in-memory computing arrays
+    note: AISP · DATE · ISLPED · IoT-J
+  - years: 2026 –
+    topic: Dynamic sparse training and machine unlearning at ultra-high sparsity
+    note: Ongoing
 ---
 
-I am a Combined M.S. and Ph.D. student at the [IRIS Lab](https://iris.skku.edu/), Department of Electrical and Computer Engineering, [Sungkyunkwan University](https://www.skku.edu/), advised by Prof. Jong Hwan Ko.
-
-**2024 – 2025.** Hyperdimensional computing on in-memory computing arrays (DATE 2025, ISLPED 2026, IEEE IoT-J 2026).
-
-**2026 –.** Dynamic sparse training and machine unlearning at ultra-high sparsity.
+I am a Combined M.S. and Ph.D. student at the [IRIS Lab](https://iris.skku.edu/), Department of Electrical and Computer Engineering, [Sungkyunkwan University](https://www.skku.edu/), advised by Prof. Jong Hwan Ko. My research focuses on sparse representations for energy-efficient on-device AI.

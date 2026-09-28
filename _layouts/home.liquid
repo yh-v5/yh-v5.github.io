@@ -1,0 +1,144 @@
+---
+layout: swiss
+---
+{%- assign works_n = site.data.works | size -%}
+{%- assign first_no = site.data.works.first.num -%}
+{%- assign last_no = site.data.works.last.num -%}
+
+<section class="hero" aria-labelledby="hero-name">
+  <div class="hero-top g mono">
+    <span class="l"><span class="sect">§</span> 00 — Index</span>
+    <span class="r">Research portfolio / {{ site.time | date: '%Y' }}</span>
+  </div>
+
+  <div class="hero-name g">
+    <h1 id="hero-name">
+      <span>{{ site.first_name }}</span>
+      <span>{{ site.last_name }}</span>
+    </h1>
+    <span class="hero-ko" lang="ko">{{ page.name_ko }}</span>
+  </div>
+
+  <div class="hero-kicker g">
+    <span class="k1 mono">Focus</span>
+    <p class="k2">{{ page.kicker }}</p>
+    <span class="k3 mono">{{ page.place }}</span>
+  </div>
+
+  <div class="hero-body g">
+    <dl class="cap hero-cap">
+      {%- for row in page.caption %}
+        <div class="cap-row">
+          <dt>{{ row.label }}</dt>
+          <dd>{{ row.value }}</dd>
+        </div>
+      {%- endfor %}
+    </dl>
+    <figure class="hero-photo">
+      <img
+        src="{{ '/assets/img/' | append: page.photo | relative_url }}"
+        alt="Portrait of {{ site.first_name }} {{ site.last_name }}"
+        width="600"
+        height="600"
+      >
+      <figcaption class="mono"><span>Fig. A</span><span>Portrait</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec statement" aria-labelledby="s1">
+  <header class="sec-h g">
+    <span class="sec-no mono"><span class="sect">§</span> 01</span>
+    <h2 class="sec-t" id="s1">Statement</h2>
+    <span class="sec-aux mono">Research</span>
+  </header>
+  <div class="g">
+    <div class="body">{{ content }}</div>
+  </div>
+  <div class="timeline">
+    {%- for t in page.timeline %}
+      <div class="tl-row g">
+        <span class="tl-years mono">{{ t.years }}</span>
+        <span class="tl-topic">{{ t.topic }}</span>
+        <span class="tl-note mono">{{ t.note }}</span>
+      </div>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="sec works compact" aria-labelledby="s2">
+  <header class="sec-h g">
+    <span class="sec-no mono"><span class="sect">§</span> 02</span>
+    <h2 class="sec-t" id="s2">Selected works</h2>
+    <span class="sec-aux mono">{{ first_no }} — {{ last_no }}</span>
+  </header>
+  {% bibliography -T work_row --group_by none --query @*[selected=true]* %}
+  <a class="more mono" href="{{ '/publications/' | relative_url }}">All works, with abstracts and BibTeX →</a>
+</section>
+
+{%- if site.news != blank %}
+  <section class="sec news" aria-labelledby="s3">
+    <header class="sec-h g">
+      <span class="sec-no mono"><span class="sect">§</span> 03</span>
+      <h2 class="sec-t" id="s3">News</h2>
+      <span class="sec-aux mono">Latest {{ page.news_limit }}</span>
+    </header>
+    {% include swiss/news.liquid limit=page.news_limit %}
+    <a class="more mono" href="{{ '/news/' | relative_url }}">All news →</a>
+  </section>
+{%- endif %}
+
+<section class="sec contact" id="contact" aria-labelledby="s4">
+  <header class="sec-h g">
+    <span class="sec-no mono"><span class="sect">§</span> 04</span>
+    <h2 class="sec-t" id="s4">Contact</h2>
+    <span class="sec-aux mono">{{ page.place }}</span>
+  </header>
+  <div class="g">
+    <dl class="cap">
+      {%- if site.data.socials.email %}
+        <div class="cap-row">
+          <dt>Email</dt>
+          <dd>
+            <a class="u-link" href="mailto:{{ site.data.socials.email | encode_email }}">
+              {{- site.data.socials.email | replace: '@', ' [at] ' -}}
+            </a>
+          </dd>
+        </div>
+      {%- endif %}
+      {%- if site.data.socials.orcid_id %}
+        <div class="cap-row">
+          <dt>ORCID</dt>
+          <dd>
+            <a class="u-link" href="https://orcid.org/{{ site.data.socials.orcid_id }}">{{ site.data.socials.orcid_id }}</a>
+          </dd>
+        </div>
+      {%- endif %}
+      {%- if site.data.socials.github_username %}
+        <div class="cap-row">
+          <dt>GitHub</dt>
+          <dd>
+            <a class="u-link" href="https://github.com/{{ site.data.socials.github_username }}">
+              {{- site.data.socials.github_username -}}
+            </a>
+          </dd>
+        </div>
+      {%- endif %}
+      {%- if site.data.socials.scholar_userid %}
+        <div class="cap-row">
+          <dt>Scholar</dt>
+          <dd>
+            <a class="u-link" href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">Google Scholar</a>
+          </dd>
+        </div>
+      {%- endif %}
+      <div class="cap-row">
+        <dt>Lab</dt>
+        <dd><a class="u-link" href="https://iris.skku.edu/">iris.skku.edu</a></dd>
+      </div>
+    </dl>
+    {%- if site.contact_note %}
+      <p class="contact-note mono">{{ site.contact_note }}</p>
+    {%- endif %}
+  </div>
+</section>
