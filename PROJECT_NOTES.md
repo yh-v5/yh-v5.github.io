@@ -215,27 +215,41 @@ Gotchas:
 
 ## Stories
 
-Short fiction in Korean, written by the owner and edited with Claude (structure, pacing, rough edges). It is only linked from the header (after Contact); nothing about it appears on the home page.
+Short fiction in Korean, written by the owner and polished with an LLM. On the site the credit is only ever "polished with an LLM" (no model or vendor name). It is only linked from the header (after Contact); nothing about it appears on the home page. Titles and descriptions are in **English**; the story text stays Korean. The list shows each story as number, title, one-line description (plus chapter count, reading time, year).
 
 | Piece                       | File                                                                         |
 | --------------------------- | ---------------------------------------------------------------------------- |
-| Story files (one per story) | `_stories/<slug>.md` — collection `stories`, served at `/stories/<slug>/`    |
+| Story files (one per story) | `_stories/<slug>.md`: collection `stories`, served at `/stories/<slug>/`     |
 | List page                   | `_pages/stories.md` (`/stories/`, `nav: false`) → `_layouts/stories.liquid`  |
 | Reader page                 | `_layouts/story.liquid` (default layout for the collection in `_config.yml`) |
 | Importer                    | `bin/import_story.py`                                                        |
 
-**To add a story:** export it as HTML (one `h1` title, optional all-italic first paragraph as subtitle, `h2` chapters, `p` / `hr` / `blockquote` / `em`), then
+**To add a story:** export it as HTML (one `h1` title, `h2` chapters, `p` / `hr` / `blockquote` / `em`), then
 
 ```bash
-python3 bin/import_story.py EXPORT.html --slug <latin-slug> --year 2026 --num 03
+python3 bin/import_story.py EXPORT.html --slug <latin-slug> --year 2026 --num 03 \
+  --title "English Title" --description "One line in English."
 ```
 
-This writes `_stories/<slug>.md` with the front matter (`title`, `num`, `year`, `date`, `subtitle`, `opening`, `description`). The list is sorted newest first by `date` (`YEAR-01-01`; set a real date to order two stories from the same year). Chapter count, reading time and the table of contents are computed from the rendered chapters (`## … {#ch-N}`), so nothing else needs editing. A story written directly in Markdown works too, as long as it follows the same conventions.
+This writes `_stories/<slug>.md` with the front matter (`title`, `title_ko` (the export's h1, not shown), `num`, `year`, `date`, `description`). An all-italic first paragraph (subtitle) is dropped. Chapter titles are rewritten without em dashes or middle dots (`1 · 제목` → `1. 제목`, `제목 — 부제` → `제목: 부제`, `제목 — 〈연재명〉 N 번째` → a `<small>` second line), and any `—` / `·` left in the prose are printed so they can be fixed by hand. The list is sorted newest first by `date` (`YEAR-01-01`; set a real date to order two stories from the same year). Chapter count, reading time and the table of contents are computed from the rendered chapters (`## … {#ch-N}`), so nothing else needs editing. A story written directly in Markdown works too, as long as it follows the same conventions.
+
+Current stories: 01 "Your Resonance" (너의 울림, 2021), 02 "Be Right Back" (다녀올게, 2026).
 
 Gotchas:
 
-- kramdown here has `hard_wrap: false`, so line breaks inside a paragraph are written as `<br>`. Scene-break paragraphs (`◇`, `* * *`, …) carry `{: .sep}`.
+- kramdown here has `hard_wrap: false`, so line breaks inside a paragraph are written as `<br>`. Scene-break paragraphs are a single `◇` with `{: .sep}`; `<hr>` is drawn as `◇` too.
 - `_stories/` is in `.prettierignore`: Prettier would rewrite whole-line `*italics*` to `_italics_`, and the importer's output is the source of truth.
+- The TOC is cut out of the rendered HTML (`split: '<h2 id="'` … `split: '">'`), so inline HTML in a chapter title must not carry attributes (plain `<small>` is fine).
+
+## House style: no em dashes or middle dots
+
+The owner does not want `—` or `·` visible anywhere on the site (pages, figures, stories). Use `/` for label separators, commas for lists, colons or parentheses otherwise, `…` for cut-off speech. En dashes in number ranges (`2024–2025`, `01–04`) are fine. After a build, check with
+
+```bash
+python3 bin/check_glyphs.py _site
+```
+
+Figure labels come from `bin/gen_work_figures.py`; edit there and regenerate, not the SVGs.
 
 ## News
 

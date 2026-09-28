@@ -8,7 +8,7 @@
   num: "01"
   short: HyperSPACE
   venue_short: ISLPED ’26
-  status: Published · Poster
+  status: Published, Poster
   statement: Making hyperdimensional encoding fully compatible with sparse adder trees on digital compute-in-memory arrays.
   medium: AND-binding, sparsity-tuned projection vectors, adaptive binary quantization
   substrate: Digital SRAM-CIM, 128 × 64 arrays
@@ -78,9 +78,9 @@
   figure_caption: Without normalization, class hypervector norms keep growing during online learning, so each new update moves the model less and less. Resetting every class HV to unit norm after each epoch lets data from every epoch count equally.
   specs:
     - label: Accuracy, 100-D HVs
-      value: +2.04% MNIST · +1.54% CIFAR-10
+      value: +2.04% MNIST, +1.54% CIFAR-10
     - label: Accuracy, 10,000-D HVs
-      value: +0.67% MNIST · +0.58% CIFAR-10
+      value: +0.67% MNIST, +0.58% CIFAR-10
     - label: Training-time overhead
       value: +1.08%
     - label: Datasets

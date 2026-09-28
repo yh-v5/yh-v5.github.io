@@ -12,7 +12,7 @@ nav_order: 2
 <section class="ph">
   <div class="ph-top g mono">
     <span class="l"><span class="sect">§</span> Works / Index</span>
-    <span class="r">{{ works_n }} works · {{ site.data.works.first.num }}–{{ site.data.works.last.num }}</span>
+    <span class="r">{{ works_n }} works / {{ site.data.works.first.num }}–{{ site.data.works.last.num }}</span>
   </div>
   <div class="g">
     <h1 class="ph-title">Selected<br>works</h1>
@@ -32,5 +32,5 @@ nav_order: 2
     <span class="wr-links">Links</span>
   </div>
   {% bibliography -T work_row --group_by none %}
-  <p class="bib-legend mono">* Equal contribution &nbsp;·&nbsp; † Corresponding author &nbsp;·&nbsp; Underline: Yeong Hwan Oh</p>
+  <p class="bib-legend mono">* Equal contribution &nbsp;/&nbsp; † Corresponding author &nbsp;/&nbsp; Underline: Yeong Hwan Oh</p>
 </section>

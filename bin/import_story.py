@@ -2,13 +2,20 @@
 _stories/<slug>.md for the Stories section.
 
 Usage:
-    python3 bin/import_story.py EXPORT.html --slug neoui-ullim --year 2021 --num 01
+    python3 bin/import_story.py EXPORT.html --slug neoui-ullim --year 2021 --num 01 \
+        --title "Your Resonance" --description "One line, in English."
 
-The h1 becomes the title. A first paragraph that is entirely italic becomes the
-subtitle; the first body paragraph is kept as `opening` for the list page.
+The site shows an English title and a one-line English description (list page
+and story header); the export's h1 is kept only as `title_ko`. A first
+paragraph that is entirely italic (a subtitle) is dropped.
 Chapters (h2) get stable anchors (#ch-1, #ch-2, ...) for the table of contents.
 Line breaks inside a paragraph are kept as hard breaks, and paragraphs that are
 only a scene-break glyph (◇ etc.) are marked with the "sep" class.
+
+The site shows no em dashes (—) or middle dots (·). Separators in chapter
+titles are rewritten ("1 · 제목" -> "1. 제목", "제목 — 부제" -> "제목: 부제",
+"제목 — 〈연재명〉 N번째" -> small second line). Any left in the prose are
+listed at the end so they can be fixed by hand.
 
 Re-running the script overwrites _stories/<slug>.md.
 """
@@ -88,12 +95,15 @@ def inline(raw):
 SCENE_BREAKS = {"◇", "◆", "＊", "\\*", "\\* \\* \\*", "⁂", "·", "· · ·"}
 
 
-def first_paragraph(body):
-    for block in body.split("\n\n"):
-        if block and not block.startswith(("#", ">", "---")) and "{: .sep}" not in block:
-            text = re.sub(r"\\(.)", r"\1", block).replace("*", "").replace("<br>", " ")
-            return " ".join(text.split())
-    return ""
+def heading(text):
+    """Chapter title without em dashes / middle dots (see module docstring)."""
+    t = " ".join(text.split())
+    t = re.sub(r"^(\d+)\s*[·—]\s*", r"\1. ", t)
+    m = re.match(r"^(.*?)\s+—\s+(〈.*)$", t)
+    if m:
+        return f"{escape_md(m.group(1))} <small>{escape_md(m.group(2))}</small>"
+    t = re.sub(r"\s*[—·]\s*", ": ", t, count=1)
+    return escape_md(t)
 
 
 def is_all_italic(raw):
@@ -117,11 +127,11 @@ def convert(path):
     for kind, text in blocks[i:]:
         if kind == "h2":
             ch += 1
-            out.append(f"## {escape_md(text.strip())} {{#ch-{ch}}}")
+            out.append(f"## {heading(text)} {{#ch-{ch}}}")
         elif kind == "p":
             s = inline(text)
             if s in SCENE_BREAKS:
-                out.append(s + "\n{: .sep}")
+                out.append("◇\n{: .sep}")  # one glyph for every scene break
             elif s:
                 out.append(s)
         elif kind == "quote-start":
@@ -145,21 +155,34 @@ def main():
     ap.add_argument("--slug", required=True)
     ap.add_argument("--year", required=True, type=int)
     ap.add_argument("--num", required=True)
+    ap.add_argument("--title", required=True, help="English title shown on the site")
+    ap.add_argument("--description", required=True, help="one-line English description")
     a = ap.parse_args()
-    title, subtitle, body = convert(a.export)
+    title_ko, subtitle, body = convert(a.export)
     q = lambda v: '"' + v.replace("\\", "\\\\").replace('"', '\\"') + '"'
-    fm = ["---", f"title: {q(title)}", f'num: "{a.num}"', f"year: {a.year}", f"date: {a.year}-01-01"]
-    if subtitle:
-        fm.append(f"subtitle: {q(subtitle)}")
-    opening = first_paragraph(body)
-    fm.append(f"opening: {q(opening)}")
-    fm.append(f"description: {q(subtitle or opening)}")
-    fm.append("---")
+    fm = [
+        "---",
+        f"title: {q(a.title)}",
+        f"title_ko: {q(title_ko)}",
+        f'num: "{a.num}"',
+        f"year: {a.year}",
+        f"date: {a.year}-01-01",
+        f"description: {q(a.description)}",
+        "---",
+    ]
     dest = os.path.join(ROOT, "_stories", a.slug + ".md")
     os.makedirs(os.path.dirname(dest), exist_ok=True)
     with open(dest, "w", encoding="utf-8") as f:
         f.write("\n".join(fm) + "\n\n" + body)
     print("wrote", os.path.relpath(dest, ROOT))
+    if subtitle:
+        print("dropped subtitle:", subtitle)
+    lines = ("\n".join(fm) + "\n\n" + body).split("\n")
+    left = [(i, l) for i, l in enumerate(lines, 1) if re.search("[—·]", l)]
+    for i, l in left:
+        print(f"  line {i}: em dash / middle dot left in the text: {l[:80]}")
+    if left:
+        print("fix these by hand (comma, colon, parentheses or …)")
 
 
 if __name__ == "__main__":

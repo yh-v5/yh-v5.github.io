@@ -69,7 +69,7 @@ class Svg:
         for cx, cy in [(24, 24), (W - 24, 24), (24, H - 24), (W - 24, H - 24)]:
             self.line(cx - 9, cy, cx + 9, cy, "bp-ln")
             self.line(cx, cy - 9, cx, cy + 9, "bp-ln")
-        self.text(44, 56, f"FIG. {no} — {name}", "bp-tb")
+        self.text(44, 56, f"FIG. {no} / {name}", "bp-tb")
         # title block, bottom-right
         bx, by, bw, bh = W - 24 - 300, H - 24 - 48, 300, 48
         self.rect(bx, by, bw, bh, "bp-ln")
@@ -143,8 +143,8 @@ def fig_hyperspace():
     s.frame("01", "BINDING SPARSITY", "HYPERSPACE")
     x0 = 170
     lanes = [
-        (96, "A · XOR-BINDING", ("1011001110100101", "0110101011001100", "1101100101101001"), "⊕", "ρ ≈ 0.5", "EXACT ADDER TREE", None, "EVERY BIT IS SUMMED"),
-        (296, "B · AND-BINDING", ("0000100000010000", "0000100100000010", "0000100000000000"), "∧", "ρ > 0.99", "SPARSE ADDER TREE", {2}, "ONLY NON-ZEROS ARE SUMMED"),
+        (96, "A / XOR-BINDING", ("1011001110100101", "0110101011001100", "1101100101101001"), "⊕", "ρ ≈ 0.5", "EXACT ADDER TREE", None, "EVERY BIT IS SUMMED"),
+        (296, "B / AND-BINDING", ("0000100000010000", "0000100100000010", "0000100000000000"), "∧", "ρ > 0.99", "SPARSE ADDER TREE", {2}, "ONLY NON-ZEROS ARE SUMMED"),
     ]
     for y, name, (h, k, r), op, rho, tname, act, tsub in lanes:
         s.text(44, y + 14, name, "bp-t")
@@ -162,7 +162,7 @@ def fig_hyperspace():
         s.text(bx + 12, by + 118, tsub, "bp-t3")
         leaves = None if act is None else act
         tree(s, bx + 110, by + 34, 150, 66, leaves)
-    s.text(44, 500, "ENCODING ENERGY ↓ UP TO 13.03×  ·  ACCURACY ↑ UP TO 3.82%", "bp-tb")
+    s.text(44, 500, "ENCODING ENERGY ↓ UP TO 13.03×  /  ACCURACY ↑ UP TO 3.82%", "bp-tb")
     return s
 
 
@@ -214,9 +214,9 @@ def fig_dipmemhd():
         cx = ax + col * (c + g) + c / 2
         hgt = [10, 22, 8, 12, 30, 14, 9, 6][col]
         s.rect(cx - 6, oy + 34 - hgt, 12, hgt, "bp-on" if col == 4 else "bp-off")
-    s.text(ax, oy + 50, "SIMILARITY · ONE SEARCH CYCLE → ARGMAX", "bp-t3")
+    s.text(ax, oy + 50, "SIMILARITY IN ONE SEARCH CYCLE → ARGMAX", "bp-t3")
     s.text(720, 118, "COMPACT IMC", "bp-t")
-    s.text(720, 136, "64 × 64 · 128 × 128", "bp-t2")
+    s.text(720, 136, "64 × 64 / 128 × 128", "bp-t2")
     s.text(720, 184, "+22.4% ACC.", "bp-t")
     s.text(720, 202, "VS. BINARY HDC", "bp-t2")
     s.text(720, 250, "6–8× ENERGY", "bp-t")
@@ -239,8 +239,8 @@ def fig_memhd():
     ah = rows * (c + g) - g
     tint = ["bp-t-a", "bp-t-b", "bp-t-c", "bp-t-d"]
     panels = [
-        (72, "A · ONE VECTOR PER CLASS", False),
-        (520, "B · MULTI-CENTROID (MEMHD)", True),
+        (72, "A / ONE VECTOR PER CLASS", False),
+        (520, "B / MULTI-CENTROID (MEMHD)", True),
     ]
     ay = 124
     for ax, name, multi in panels:
@@ -254,8 +254,9 @@ def fig_memhd():
                     s.rect(x, y, c, c, tint[col])
                 else:
                     s.rect(x, y, c, c, "bp-idle", ' fill="HATCH"')
-            lab = f"{'ABCD'[col // 2]}{col % 2 + 1}" if multi else ("ABCD"[col] if col < 4 else "—")
-            s.text(ax + col * (c + g) + c / 2, ay - 10, lab, "bp-t2", "middle")
+            lab = f"{'ABCD'[col // 2]}{col % 2 + 1}" if multi else ("ABCD"[col] if col < 4 else "")
+            if lab:  # unused (hatched) columns stay unlabelled
+                s.text(ax + col * (c + g) + c / 2, ay - 10, lab, "bp-t2", "middle")
         s.rect(ax - 6, ay - 6, aw + 12, ah + 12, "bp-ln")
         if not multi:
             # vector longer than the array: overflow rows, dashed
@@ -268,11 +269,11 @@ def fig_memhd():
             ix, iy = ax + 6 * (c + g) - g / 2, ay + ah / 2
             s.rect(ix - 26, iy - 9, 52, 18, "bp-paper")
             s.text(ix, iy + 4, "IDLE", "bp-t2", "middle")
-            label = "50% USED · ≥ 2 CYCLES"
+            label = "50% USED, ≥ 2 CYCLES"
         else:
-            label = "100% USED · 1 CYCLE"
+            label = "100% USED, 1 CYCLE"
         s.dim_h(ax, ax + aw, ay + ah + 100, label)
-    s.text(44, 500, "ACC. ↑ UP TO 13.69% AT EQUAL MEMORY  ·  MEMORY EFF. ↑ 13.25×", "bp-tb")
+    s.text(44, 500, "ACC. ↑ UP TO 13.69% AT EQUAL MEMORY  /  MEMORY EFF. ↑ 13.25×", "bp-tb")
     return s
 
 

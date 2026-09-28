@@ -7,7 +7,7 @@
 {%- assign work = site.data.works | where: 'key', entry.key | first -%}
 {%- assign exhibit = '/' | append: site.scholar.details_dir | append: '/' | append: entry.key | append: '/' | relative_url -%}
 <article class="wr g">
-  <div class="wr-no" aria-label="Work {{ work.num }}">{{ work.num | default: '—' }}</div>
+  <div class="wr-no" aria-label="Work {{ work.num }}">{{ work.num }}</div>
   <div class="wr-main">
     <a class="wr-title{% if entry.title_en %} ko{% endif %}" href="{{ exhibit }}">{{ entry.title }}</a>
     {%- if entry.title_en %}
