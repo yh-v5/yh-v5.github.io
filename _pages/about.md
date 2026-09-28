@@ -16,7 +16,7 @@ selected_papers: true
 social: true
 
 announcements:
-  enabled: false
+  enabled: true
   scrollable: true
   limit: 5
 
@@ -28,6 +28,6 @@ latest_posts:
 
 I am a Combined M.S. and Ph.D. student at the [IRIS Lab](https://iris.skku.edu/), Department of Electrical and Computer Engineering, [Sungkyunkwan University](https://www.skku.edu/), advised by Prof. Jong Hwan Ko.
 
-**2024 – 2025.** Hyperdimensional computing on in-memory computing arrays.
+**2024 – 2025.** Hyperdimensional computing on in-memory computing arrays (DATE 2025, ISLPED 2026, IEEE IoT-J 2026).
 
 **2026 –.** Dynamic sparse training and machine unlearning at ultra-high sparsity.

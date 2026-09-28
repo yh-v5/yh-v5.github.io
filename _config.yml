@@ -14,7 +14,7 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
   hyperdimensional computing on in-memory computing arrays, dynamic sparse training, and
   machine unlearning at ultra-high sparsity.
 footer_text: >
-  &copy; 2026 Yeong Hwan Oh. Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
+  Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
   and the <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
 keywords: sparse representations, hyperdimensional computing, in-memory computing, dynamic sparse training, machine unlearning, edge AI, energy-efficient AI, SRAM-CIM
 lang: en
