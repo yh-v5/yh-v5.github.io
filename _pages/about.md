@@ -19,6 +19,8 @@ caption:
     value: <a class="u-link" href="https://www.skku.edu/">Sungkyunkwan University</a>
   - label: Advisor
     value: Prof. Jong Hwan Ko
+  - label: Base
+    value: Suwon, Republic of Korea
 
 timeline:
   - years: 2024 – 2025
@@ -29,4 +31,4 @@ timeline:
     note: Ongoing
 ---
 
-I am a Combined M.S. and Ph.D. student at the [IRIS Lab](https://iris.skku.edu/), Department of Electrical and Computer Engineering, [Sungkyunkwan University](https://www.skku.edu/), advised by Prof. Jong Hwan Ko. My research focuses on sparse representations for energy-efficient on-device AI.
+I am a Combined M.S. and Ph.D. student at the [IRIS Lab](https://iris.skku.edu/), Department of Electrical and Computer Engineering, [Sungkyunkwan University](https://www.skku.edu/), advised by Prof. Jong Hwan Ko.

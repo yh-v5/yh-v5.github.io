@@ -28,8 +28,8 @@
   --grid-row: rgba(31, 61, 255, 0.07);
   --selection: rgba(31, 61, 255, 0.18);
 
-  --maxw: 1320px;
-  --pad: clamp(16px, 3.2vw, 44px);
+  --maxw: 1680px;
+  --pad: clamp(16px, 3.2vw, 56px);
   --gut: clamp(12px, 1.7vw, 24px);
   --cols: 12;
 
@@ -377,21 +377,25 @@ html.grid-on .grid-overlay {
   align-items: baseline;
 }
 .sec-no {
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 6;
+  grid-row: 1;
   color: var(--blue-ink);
 }
-.sec-t {
-  grid-column: 3 / span 7;
-  font-family: var(--f-tight);
-  font-size: clamp(28px, 3.4vw, 44px);
-  line-height: 1;
-  letter-spacing: -0.035em;
-  font-weight: 700;
-}
 .sec-aux {
-  grid-column: 10 / span 3;
+  grid-column: 7 / span 6;
+  grid-row: 1;
   text-align: right;
   color: var(--ink-3);
+}
+.sec-t {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: clamp(14px, 1.6vw, 22px);
+  font-family: var(--f-tight);
+  font-size: clamp(30px, 3.6vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
 }
 .more {
   display: inline-block;
@@ -445,19 +449,23 @@ html.grid-on .grid-overlay {
   position: relative;
   margin-top: clamp(28px, 5vw, 64px);
 }
+.hero-name {
+  align-items: start;
+}
 .hero-name h1 {
   grid-column: 1 / span 11;
   font-family: var(--f-wide);
   font-stretch: 125%;
   font-variation-settings: "wdth" 125;
   font-weight: 800;
-  font-size: clamp(54px, 12.6vw, 176px);
-  line-height: 0.84;
+  font-size: clamp(40px, 6.2vw, 104px);
+  line-height: 0.86;
   letter-spacing: -0.035em;
   text-transform: uppercase;
 }
 .hero-name h1 span {
   display: block;
+  white-space: nowrap;
 }
 .hero-ko {
   grid-column: 12 / span 1;
@@ -465,39 +473,17 @@ html.grid-on .grid-overlay {
   writing-mode: vertical-rl;
   font-family: var(--f-ko);
   font-weight: 700;
-  font-size: clamp(22px, 2.6vw, 36px);
+  font-size: clamp(18px, 1.9vw, 30px);
   letter-spacing: 0.08em;
   color: var(--blue-ink);
   line-height: 1;
 }
-.hero-kicker {
-  margin-top: 28px;
-  padding-top: 12px;
-  border-top: 1px solid var(--rule);
-}
-.hero-kicker .k1 {
-  grid-column: 1 / span 2;
-  color: var(--ink-3);
-}
-.hero-kicker .k2 {
-  grid-column: 3 / span 7;
-  font-family: var(--f-tight);
-  font-weight: 600;
-  font-size: clamp(18px, 1.9vw, 24px);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-.hero-kicker .k3 {
-  grid-column: 10 / span 3;
-  text-align: right;
-  color: var(--ink-3);
-}
 .hero-body {
-  margin-top: 44px;
+  margin-top: clamp(36px, 4.4vw, 72px);
   row-gap: 32px;
 }
 .hero-cap {
-  grid-column: 3 / span 6;
+  grid-column: 1 / span 7;
 }
 .hero-photo {
   grid-column: 10 / span 3;
@@ -528,13 +514,23 @@ html.grid-on .grid-overlay {
   color: var(--ink-3);
 }
 
-.statement .body {
-  grid-column: 3 / span 8;
+.statement .lead {
+  grid-column: 1 / span 10;
+  margin: 0 0 22px;
   font-family: var(--f-tight);
-  font-size: clamp(20px, 2.1vw, 28px);
-  line-height: 1.28;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: clamp(24px, 2.7vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+.statement .body {
+  grid-column: 1 / span 8;
+  font-family: var(--f-tight);
+  font-size: clamp(18px, 1.75vw, 23px);
+  line-height: 1.32;
+  letter-spacing: -0.015em;
   font-weight: 500;
+  color: var(--ink-2);
 }
 .statement .body p:last-child {
   margin-bottom: 0;
@@ -551,11 +547,11 @@ html.grid-on .grid-overlay {
   border-bottom: 1px solid var(--hair);
 }
 .tl-years {
-  grid-column: 3 / span 2;
+  grid-column: 1 / span 2;
   color: var(--blue-ink);
 }
 .tl-topic {
-  grid-column: 5 / span 5;
+  grid-column: 3 / span 6;
   font-family: var(--f-tight);
   font-weight: 600;
   font-size: 18px;
@@ -563,7 +559,7 @@ html.grid-on .grid-overlay {
   letter-spacing: -0.015em;
 }
 .tl-note {
-  grid-column: 10 / span 3;
+  grid-column: 9 / span 4;
   text-align: right;
   color: var(--ink-2);
 }
@@ -599,13 +595,13 @@ html.grid-on .grid-overlay {
 }
 
 .contact .cap {
-  grid-column: 3 / span 8;
+  grid-column: 1 / span 7;
 }
 .contact .cap-row {
   grid-template-columns: minmax(96px, 25%) 1fr;
 }
 .contact-note {
-  grid-column: 3 / span 8;
+  grid-column: 1 / span 7;
   margin-top: 14px;
   color: var(--ink-3);
 }
@@ -775,13 +771,13 @@ html.grid-on .grid-overlay {
   font-stretch: 125%;
   font-variation-settings: "wdth" 125;
   font-weight: 800;
-  font-size: clamp(46px, 9.4vw, 132px);
+  font-size: clamp(40px, 6.2vw, 104px);
   line-height: 0.86;
   letter-spacing: -0.035em;
   text-transform: uppercase;
 }
 .ph-lede {
-  grid-column: 3 / span 7;
+  grid-column: 1 / span 7;
   margin-top: 28px;
   font-family: var(--f-tight);
   font-size: clamp(17px, 1.6vw, 21px);
@@ -820,7 +816,7 @@ html.grid-on .grid-overlay {
   font-stretch: 125%;
   font-variation-settings: "wdth" 125;
   font-weight: 800;
-  font-size: clamp(88px, 15vw, 220px);
+  font-size: clamp(72px, 10vw, 168px);
   line-height: 0.78;
   letter-spacing: -0.05em;
   color: var(--blue-ink);
@@ -838,8 +834,8 @@ html.grid-on .grid-overlay {
 .ex-title {
   font-family: var(--f-tight);
   font-weight: 700;
-  font-size: clamp(30px, 4.2vw, 60px);
-  line-height: 1.02;
+  font-size: clamp(28px, 3.4vw, 52px);
+  line-height: 1.04;
   letter-spacing: -0.04em;
 }
 .ex-title.ko {
@@ -1280,15 +1276,10 @@ html.grid-on .grid-overlay {
     margin-top: 72px;
   }
   .sec-no {
-    grid-column: 1 / span 1;
-  }
-  .sec-t {
-    grid-column: 2 / span 3;
+    grid-column: 1 / span 2;
   }
   .sec-aux {
-    grid-column: 1 / -1;
-    text-align: left;
-    margin-top: 6px;
+    grid-column: 3 / span 2;
   }
   .hero-top .l,
   .hero-top .r,
@@ -1301,19 +1292,18 @@ html.grid-on .grid-overlay {
     justify-content: flex-start;
   }
   .hero-name h1 {
-    grid-column: 1 / span 3;
-  }
-  .hero-ko {
-    grid-column: 4 / span 1;
-  }
-  .hero-kicker .k1,
-  .hero-kicker .k2,
-  .hero-kicker .k3 {
     grid-column: 1 / -1;
-    text-align: left;
+    grid-row: 1;
+    font-size: 9.2vw;
   }
-  .hero-kicker .k2 {
-    margin: 6px 0;
+  /* "OH" leaves the end of the second line free: set the Hangul name there. */
+  .hero-ko {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+    align-self: end;
+    writing-mode: horizontal-tb;
+    font-size: 20px;
+    letter-spacing: 0.04em;
   }
   .hero-cap {
     grid-column: 1 / -1;
@@ -1323,6 +1313,7 @@ html.grid-on .grid-overlay {
     grid-column: 1 / span 2;
     order: 1;
   }
+  .statement .lead,
   .statement .body,
   .tl-topic,
   .contact .cap,
@@ -1389,6 +1380,20 @@ html.grid-on .grid-overlay {
   }
   .spec td {
     font-size: 16px;
+  }
+}
+
+/* Large full-screen displays (FHD/QHD): nudge the reading sizes up. */
+@media (min-width: 1800px) {
+  body {
+    font-size: 16px;
+  }
+  .cap-row dd,
+  .news-text {
+    font-size: 17px;
+  }
+  .wr-authors {
+    font-size: 14.5px;
   }
 }
 

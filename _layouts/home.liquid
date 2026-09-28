@@ -19,12 +19,6 @@ layout: swiss
     <span class="hero-ko" lang="ko">{{ page.name_ko }}</span>
   </div>
 
-  <div class="hero-kicker g">
-    <span class="k1 mono">Focus</span>
-    <p class="k2">{{ page.kicker }}</p>
-    <span class="k3 mono">{{ page.place }}</span>
-  </div>
-
   <div class="hero-body g">
     <dl class="cap hero-cap">
       {%- for row in page.caption %}
@@ -49,10 +43,11 @@ layout: swiss
 <section class="sec statement" aria-labelledby="s1">
   <header class="sec-h g">
     <span class="sec-no mono"><span class="sect">§</span> 01</span>
-    <h2 class="sec-t" id="s1">Statement</h2>
+    <h2 class="sec-t" id="s1">Focus</h2>
     <span class="sec-aux mono">Research</span>
   </header>
   <div class="g">
+    <p class="lead">{{ page.kicker }}</p>
     <div class="body">{{ content }}</div>
   </div>
   <div class="timeline">
