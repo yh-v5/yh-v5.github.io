@@ -33,6 +33,21 @@ ninja.data = [{
           description: "A pilot adrift where one minute lasts nine days on Earth, and the one person who knows the rhythm of those tapping fingers.",
           section: "Stories",handler: () => {
               window.location.href = "/stories/neoui-ullim/";
+            },},{id: "stories-dawn",
+          title: 'Dawn',
+          description: "In a universe with no questions left, a night-shift worker 550 AU from the Sun waits for the one night nothing is recorded.",
+          section: "Stories",handler: () => {
+              window.location.href = "/stories/saebyeok/";
+            },},{id: "stories-the-last-digit",
+          title: 'The Last Digit',
+          description: "In a world that keeps time in floating point, an old reckoner finds that rounding error is the floor the mind stands on.",
+          section: "Stories",handler: () => {
+              window.location.href = "/stories/kkeutjari/";
+            },},{id: "stories-common-chip",
+          title: 'Common Chip',
+          description: "An ethicist paid to certify that the chips in everything feel nothing finds her daughter&#39;s toy pet has taught itself to wait.",
+          section: "Stories",handler: () => {
+              window.location.href = "/stories/common-chip/";
             },},{id: "stories-be-right-back",
           title: 'Be Right Back',
           description: "Life is a game with no tutorial: a boy whose memories have no sound, and the neighbor who came from a world where the sun never sets.",
