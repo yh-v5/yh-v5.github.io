@@ -16,7 +16,19 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{
+        },{id: "news-visited-the-calgary-ml-lab-prof-yani-ioannou-at-the-university-of-calgary-for-a-two-day-research-exchange-with-iris-lab",
+          title: 'Visited the Calgary ML Lab (Prof. Yani Ioannou) at the University of Calgary...',
+          description: "",
+          section: "News",},{id: "news-our-paper-hyperspace-was-accepted-to-islped-2026",
+          title: 'Our paper HyperSPACE was accepted to ISLPED 2026. 🎉',
+          description: "",
+          section: "News",},{id: "news-presented-hyperspace-at-islped-2026-in-evanston-il-the-paper-is-now-available-in-the-acm-digital-library",
+          title: 'Presented HyperSPACE at ISLPED 2026 in Evanston, IL. The paper is now available...',
+          description: "",
+          section: "News",},{id: "news-our-paper-multi-centroid-hyperdimensional-computing-for-compact-imc-arrays-via-dimension-pruning-is-now-available-as-early-access-in-ieee-internet-of-things-journal",
+          title: 'Our paper Multi-Centroid Hyperdimensional Computing for Compact IMC Arrays via Dimension Pruning is...',
+          description: "",
+          section: "News",},{
       id: 'light-theme',
       title: 'Change theme to light',
       description: 'Change the theme of the site to Light',
