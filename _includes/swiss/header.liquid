@@ -34,13 +34,9 @@
       >
       <a href="{{ '/#contact' | relative_url }}">Contact</a>
     </nav>
-    <div class="sh-tools mono">
-      <button type="button" class="tgl" data-toggle="grid" aria-pressed="false" title="Show the layout grid (G)">
-        <span class="tgl-box" aria-hidden="true"></span>Grid
-      </button>
-      <button type="button" class="tgl" data-toggle="theme" aria-pressed="false" title="Blueprint (dark) mode">
-        <span class="tgl-box" aria-hidden="true"></span>Blueprint
-      </button>
+    <div class="sh-tools mono" role="group" aria-label="Color theme">
+      <button type="button" class="tgl" data-theme-set="dark" aria-pressed="true"><span class="tgl-box" aria-hidden="true"></span>Dark</button>
+      <button type="button" class="tgl" data-theme-set="light" aria-pressed="false"><span class="tgl-box" aria-hidden="true"></span>Light</button>
     </div>
   </div>
 </header>

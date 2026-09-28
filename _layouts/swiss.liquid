@@ -2,13 +2,10 @@
 <html lang="{{ site.lang }}">
   <head>
     <script>
-      // Apply saved theme / grid before first paint.
+      // Dark is the default; apply a saved "light" choice before first paint.
       (function () {
-        var d = document.documentElement;
         try {
-          var t = localStorage.getItem('yh-theme');
-          if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
-          if (localStorage.getItem('yh-grid') === 'on') d.classList.add('grid-on');
+          if (localStorage.getItem('yh-theme') === 'light') document.documentElement.setAttribute('data-theme', 'light');
         } catch (e) {}
       })();
     </script>
@@ -45,13 +42,6 @@
       {{ content }}
     </main>
     {% include swiss/footer.liquid %}
-    <div class="grid-overlay" aria-hidden="true">
-      <div class="wrap g">
-        {%- for i in (1..12) -%}
-          <span data-n="{{ i | prepend: '0' | slice: -2, 2 }}"></span>
-        {%- endfor -%}
-      </div>
-    </div>
     <script src="{{ '/assets/swiss/swiss.js' | relative_url | bust_file_cache }}" defer></script>
   </body>
 </html>
