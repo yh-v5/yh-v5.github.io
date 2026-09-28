@@ -1036,10 +1036,10 @@ dd {
   color: var(--ink-2);
   max-width: 38em;
 }
-/* the quoted line is a small epigraph: 60% of the 17px it started at */
+/* the quoted line is a small epigraph: 17px x 0.6 x 1.2 */
 .st-line {
   font-family: var(--f-ko);
-  font-size: 10.2px;
+  font-size: 12.24px;
   line-height: 1.7;
   word-break: keep-all;
 }
@@ -1081,16 +1081,6 @@ dd {
   font-size: clamp(40px, 5.6vw, 92px);
   line-height: 1.02;
   letter-spacing: -0.045em;
-}
-.story-sub {
-  margin-top: 18px;
-  font-family: var(--f-tight);
-  font-weight: 500;
-  font-size: clamp(18px, 1.75vw, 23px);
-  line-height: 1.3;
-  letter-spacing: -0.015em;
-  color: var(--ink-2);
-  max-width: 34em;
 }
 .story-wrap {
   margin-top: clamp(40px, 5vw, 72px);

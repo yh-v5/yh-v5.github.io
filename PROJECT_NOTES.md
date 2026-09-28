@@ -215,7 +215,7 @@ Gotchas:
 
 ## Stories
 
-Short fiction in Korean, written by the owner and polished with an LLM. On the site the credit is only ever "polished with an LLM" (no model or vendor name). It is only linked from the header (after Contact); nothing about it appears on the home page. Titles and descriptions are in **English**; the story text stays Korean. The list shows each story as number, title and one key sentence quoted verbatim from the story in Korean (`line`; plus the year; no chapter count or reading time, by request). The story page shows the English title and the one-line English `description`.
+Short fiction in Korean, written by the owner and polished with an LLM. On the site the credit is only ever "polished with an LLM" (no model or vendor name). It is only linked from the header (after Contact); nothing about it appears on the home page. Titles and descriptions are in **English**; the story text stays Korean. The list shows each story as number, title and one key sentence quoted verbatim from the story in Korean (`line`; plus the year; no chapter count or reading time, by request). The story page shows the English title only; the one-line English `description` is kept for page metadata (search and link previews).
 
 | Piece                       | File                                                                         |
 | --------------------------- | ---------------------------------------------------------------------------- |
