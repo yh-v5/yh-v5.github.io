@@ -28,14 +28,14 @@ ninja.data = [{
           section: "News",},{id: "news-our-paper-multi-centroid-hyperdimensional-computing-for-compact-imc-arrays-via-dimension-pruning-is-now-available-as-early-access-in-ieee-internet-of-things-journal",
           title: 'Our paper Multi-Centroid Hyperdimensional Computing for Compact IMC Arrays via Dimension Pruning is...',
           description: "",
-          section: "News",},{id: "stories-너의-울림",
-          title: '너의 울림',
-          description: "“관제, 여기는 PLANCK-1. 진입 삼십 초 전.”",
+          section: "News",},{id: "stories-your-resonance",
+          title: 'Your Resonance',
+          description: "A pilot adrift where one minute lasts nine days on Earth, and the one person who knows the rhythm of those tapping fingers.",
           section: "Stories",handler: () => {
               window.location.href = "/stories/neoui-ullim/";
-            },},{id: "stories-다녀올게",
-          title: '다녀올게',
-          description: "한 사람이 만든 세계에 대한 이야기",
+            },},{id: "stories-be-right-back",
+          title: 'Be Right Back',
+          description: "Life is a game with no tutorial: a boy whose memories have no sound, and the neighbor who came from a world where the sun never sets.",
           section: "Stories",handler: () => {
               window.location.href = "/stories/danyeoolge/";
             },},{
