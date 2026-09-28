@@ -1,16 +1,22 @@
-"""Convert a story exported as HTML (h1 / h2 / p / hr / blockquote / em) into
-_stories/<slug>.md for the Stories section.
+"""Convert a story exported as HTML (h1 / h2 / p / hr / blockquote / em), or
+written as Markdown / plain text, into _stories/<slug>.md for the Stories section.
 
 Usage:
     python3 bin/import_story.py EXPORT.html --slug neoui-ullim --year 2021 --num 01 \
         --title "Your Resonance" --description "One line, in English."
+
+A .md or .txt source uses "# 제목" for the title, "## 장" for chapters, blank
+lines between paragraphs, "> " for quoted blocks, "---" for a rule and *…* or
+_…_ for italics. Every line break inside a paragraph is kept (plain text is
+usually written that way), not only Markdown's two-trailing-space breaks.
 
 The site shows an English title and a one-line English description (list page
 and story header); the export's h1 is kept only as `title_ko`. A first
 paragraph that is entirely italic (a subtitle) is dropped.
 Chapters (h2) get stable anchors (#ch-1, #ch-2, ...) for the table of contents.
 Line breaks inside a paragraph are kept as hard breaks, and paragraphs that are
-only a scene-break glyph (◇ etc.) are marked with the "sep" class.
+only a scene-break glyph (◇ etc.) are marked with the "sep" class. Italics
+(emphasis) are dropped: the stories are set without them.
 
 The site shows no em dashes (—) or middle dots (·). Separators in chapter
 titles are rewritten ("1 · 제목" -> "1. 제목", "제목 — 부제" -> "제목: 부제",
@@ -20,6 +26,7 @@ listed at the end so they can be fixed by hand.
 Re-running the script overwrites _stories/<slug>.md.
 """
 import argparse
+import html
 import os
 import re
 from html.parser import HTMLParser
@@ -79,11 +86,11 @@ def escape_md(text):
 
 
 def inline(raw):
-    """Escape Markdown, restore italics, keep in-paragraph line breaks."""
+    """Escape Markdown, drop italics, keep in-paragraph line breaks."""
     lines = []
     for line in raw.strip().split("\n"):
         line = escape_md(line.strip())
-        line = line.replace("\x01", "*").replace("\x02", "*")
+        line = line.replace("\x01", "").replace("\x02", "")  # stories carry no italics
         # things that would start a block construct at the beginning of a line
         line = re.sub(r"^(\d+)\.(\s)", r"\1\\.\2", line)
         line = re.sub(r"^([-+#>=])", r"\\\1", line)
@@ -111,9 +118,41 @@ def is_all_italic(raw):
     return r.startswith("\x01") and r.endswith("\x02") and r.count("\x01") == 1
 
 
+def md_inline(line):
+    t = html.escape(line.strip())
+    # *…* may sit inside a word (Korean particles follow it: *강조*라고); _…_ may not
+    t = re.sub(r"(?<!\\)\*(?![\s*])(.+?)(?<![\s\\])\*", r"<em>\1</em>", t)
+    t = re.sub(r"(?<![\\\w])_(?!\s)(.+?)(?<![\s\\])_(?!\w)", r"<em>\1</em>", t)
+    return re.sub(r"\\(.)", r"\1", t)
+
+
+def md_to_html(text):
+    """Just enough Markdown for a story: the same blocks an HTML export has."""
+    out = []
+    for block in re.split(r"\n[ \t]*\n", text.strip()):
+        lines = [l.rstrip() for l in block.strip("\n").split("\n")]
+        first = lines[0].strip()
+        if len(lines) == 1 and re.fullmatch(r"#{1,2} .+", first):
+            tag = "h1" if first.startswith("# ") else "h2"
+            out.append(f"<{tag}>{md_inline(first.lstrip('#'))}</{tag}>")
+        elif len(lines) == 1 and re.fullmatch(r"(-{3,}|\*{3,}|_{3,})", first):
+            out.append("<hr>")
+        elif all(l.lstrip().startswith(">") for l in lines):
+            inner = [re.sub(r"^\s*>\s?", "", l) for l in lines]
+            paras = re.split(r"\n\s*\n", "\n".join(inner))
+            body = "".join("<p>" + "<br>".join(md_inline(l) for l in p.split("\n")) + "</p>" for p in paras)
+            out.append(f"<blockquote>{body}</blockquote>")
+        else:
+            out.append("<p>" + "<br>".join(md_inline(l) for l in lines) + "</p>")
+    return "<body>\n" + "\n".join(out) + "\n</body>\n"
+
+
 def convert(path):
     p = Blocks()
-    p.feed(open(path, encoding="utf-8").read())
+    source = open(path, encoding="utf-8").read()
+    if path.lower().endswith((".md", ".markdown", ".txt")):
+        source = md_to_html(source)
+    p.feed(source)
     blocks = p.blocks
     title = next(t for k, t in blocks if k == "h1").strip()
     i = [k for k, _ in blocks].index("h1") + 1

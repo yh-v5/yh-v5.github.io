@@ -1190,6 +1190,11 @@ dd {
 .story-body hr:has(+ h2) {
   display: none;
 }
+/* stories are set without emphasis, even if a hand-written file has some */
+.story-body em,
+.story-body i {
+  font-style: normal;
+}
 .story-body p.sep {
   margin: 2.2em 0;
   text-align: center;
