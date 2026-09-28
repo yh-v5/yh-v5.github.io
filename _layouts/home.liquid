@@ -32,8 +32,8 @@ layout: swiss
       <img
         src="{{ '/assets/img/' | append: page.photo | relative_url }}"
         alt="Portrait of {{ site.first_name }} {{ site.last_name }}"
-        width="600"
-        height="600"
+        width="800"
+        height="800"
       >
       <figcaption class="mono"><span>Fig. A</span><span>Portrait</span></figcaption>
     </figure>
@@ -101,7 +101,15 @@ layout: swiss
           </dd>
         </div>
       {%- endif %}
-      {%- if site.data.socials.orcid_id %}
+      {%- comment -%} Google Scholar takes ORCID's place once scholar_userid is set in _data/socials.yml {%- endcomment -%}
+      {%- if site.data.socials.scholar_userid %}
+        <div class="cap-row">
+          <dt>Scholar</dt>
+          <dd>
+            <a class="u-link" href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">Google Scholar</a>
+          </dd>
+        </div>
+      {%- elsif site.data.socials.orcid_id %}
         <div class="cap-row">
           <dt>ORCID</dt>
           <dd>
@@ -116,14 +124,6 @@ layout: swiss
             <a class="u-link" href="https://github.com/{{ site.data.socials.github_username }}">
               {{- site.data.socials.github_username -}}
             </a>
-          </dd>
-        </div>
-      {%- endif %}
-      {%- if site.data.socials.scholar_userid %}
-        <div class="cap-row">
-          <dt>Scholar</dt>
-          <dd>
-            <a class="u-link" href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">Google Scholar</a>
           </dd>
         </div>
       {%- endif %}
