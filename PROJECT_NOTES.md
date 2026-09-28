@@ -224,7 +224,7 @@ Short fiction in Korean, written by the owner and polished with an LLM. On the s
 | Reader page                 | `_layouts/story.liquid` (default layout for the collection in `_config.yml`) |
 | Importer                    | `bin/import_story.py`                                                        |
 
-**To add a story:** export it as HTML (one `h1` title, `h2` chapters, `p` / `hr` / `blockquote` / `em`), then
+**To add a story:** export it as HTML (one `h1` title, `h2` chapters, `p` / `hr` / `blockquote` / `em`), or give it as Markdown / plain text (`.md` / `.txt`: `# 제목`, `## 장`, blank lines between paragraphs, `>` quotes, `---` rules; every line break inside a paragraph is kept), then
 
 ```bash
 python3 bin/import_story.py EXPORT.html --slug <latin-slug> --year 2026 --num 03 \
@@ -233,7 +233,7 @@ python3 bin/import_story.py EXPORT.html --slug <latin-slug> --year 2026 --num 03
 
 This writes `_stories/<slug>.md` with the front matter (`title`, `title_ko` (the export's h1, not shown), `num`, `year`, `date`, `description`). An all-italic first paragraph (subtitle) is dropped. Chapter titles are rewritten without em dashes or middle dots (`1 · 제목` → `1. 제목`, `제목 — 부제` → `제목: 부제`, `제목 — 〈연재명〉 N 번째` → a `<small>` second line), and any `—` / `·` left in the prose are printed so they can be fixed by hand. The list is sorted newest first by `date` (`YEAR-01-01`; set a real date to order two stories from the same year). Chapter count, reading time and the table of contents are computed from the rendered chapters (`## … {#ch-N}`), so nothing else needs editing. A story written directly in Markdown works too, as long as it follows the same conventions.
 
-Current stories: 01 "Your Resonance" (너의 울림, 2021), 02 "Dawn" (새벽, 2022, one part, no chapters), 03 "Be Right Back" (다녀올게, 2026). Numbers follow the year the story was written, so a new story may push later ones up by one (URLs use the slug, so nothing breaks). A story without `##` chapters just has no contents list.
+Current stories: 01 "Your Resonance" (너의 울림, 2021), 02 "Dawn" (새벽, 2022, no chapters), 03 "The Last Digit" (끝자리, 2025, no chapters), 04 "Be Right Back" (다녀올게, 2026). Numbers follow the year the story was written, so a new story may push later ones up by one (URLs use the slug, so nothing breaks). A story without `##` chapters just has no contents list.
 
 Gotchas:
 
