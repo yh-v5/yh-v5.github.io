@@ -4,8 +4,8 @@ layout: swiss
 {%- comment -%}
   Reader layout for one story in _stories/ (applied via _config.yml defaults).
   Chapter headings carry ids (#ch-1 ...) from bin/import_story.py; the table
-  of contents is built from them. Title and description are in English; the
-  story text is Korean.
+  of contents is built from them. The title is in English and the story text is
+  Korean; the English `description` is only used for page metadata.
 {%- endcomment -%}
 {%- assign parts = content | split: '<h2 id="' -%}
 {%- assign chapter_count = parts | size | minus: 1 -%}
@@ -27,7 +27,6 @@ layout: swiss
       <span class="dim">In Korean</span>
     </div>
     <h1 class="story-title">{{ page.title }}</h1>
-    <p class="story-sub">{{ page.description }}</p>
   </div>
 </header>
 
