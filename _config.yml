@@ -153,6 +153,9 @@ collections:
     output: true
   projects:
     output: true
+  stories:
+    output: true
+    permalink: /stories/:name/
   teachings:
     output: false
 
@@ -241,6 +244,10 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  - scope:
+      type: stories
+    values:
+      layout: story
 
 sass:
   style: compressed

@@ -33,6 +33,13 @@
         >News</a
       >
       <a href="{{ '/#contact' | relative_url }}">Contact</a>
+      <a
+        href="{{ '/stories/' | relative_url }}"
+        {% if page.url == '/stories/' or page.collection == 'stories' %}
+          aria-current="page"
+        {% endif %}
+        >Stories</a
+      >
     </nav>
     <div class="sh-tools mono" role="group" aria-label="Color theme">
       <button type="button" class="tgl" data-theme-set="dark" aria-pressed="true"><span class="tgl-box" aria-hidden="true"></span>Dark</button>
