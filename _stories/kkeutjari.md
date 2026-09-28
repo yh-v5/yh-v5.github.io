@@ -5,6 +5,7 @@ num: "04"
 year: 2025
 date: 2025-01-01
 description: "In a world that keeps time in floating point, an old reckoner finds that rounding error is the floor the mind stands on."
+line: "오차는 자아가 딛고 선 바닥이었다."
 ---
 
 우리 셈학자들은 오랫동안 오차를 셈의 병이라고 가르쳐 왔다. 모든 계산의 끝에는 마지막 자리에서 잘려 나가는 부스러기가 있고, 훌륭한 셈학자란 그 부스러기를 줄이는 데 평생을 바치는 사람이라고. 나 역시 그렇게 배웠고, 백 년 가까이 그렇게 가르쳤다. 그것은 틀린 가르침이었다. 나는 이 판에 글을 새겨, 오차가 병이 아니라 무엇의 바닥인지를 기록해 두려 한다. 그리고 그 따름으로서, 그 바닥이 언젠가 어떻게 꺼질 것인지도.

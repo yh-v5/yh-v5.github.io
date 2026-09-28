@@ -3,7 +3,9 @@ layout: swiss
 ---
 {%- comment -%}
   Stories index (/stories/). Not linked from the home page; reached from the
-  header nav. Each story lives in _stories/ (see bin/import_story.py).
+  header nav. Each story lives in _stories/ (see bin/import_story.py). Under
+  each title the list quotes one key sentence from the story (`line`, Korean);
+  the English `description` is used on the story page.
 {%- endcomment -%}
 {%- assign stories = site.stories | sort: 'date' | reverse -%}
 
@@ -28,7 +30,11 @@ layout: swiss
         <span class="st-no">{{ s.num }}</span>
         <span class="st-main">
           <span class="st-title">{{ s.title }}</span>
-          <span class="st-desc">{{ s.description }}</span>
+          {%- if s.line %}
+            <span class="st-desc st-line" lang="ko">{{ s.line }}</span>
+          {%- else %}
+            <span class="st-desc">{{ s.description }}</span>
+          {%- endif %}
         </span>
         <span class="st-meta mono">
           {%- if chapters > 0 %}{{ chapters }} chapters / {% endif %}~{{ mins }} min

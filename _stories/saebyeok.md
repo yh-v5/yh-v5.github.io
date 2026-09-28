@@ -5,6 +5,7 @@ num: "02"
 year: 2022
 date: 2022-01-01
 description: "In a universe with no questions left, a night-shift worker 550 AU from the Sun waits for the one night nothing is recorded."
+line: "답은 언제나, 빛보다 먼저 도착한다."
 ---
 
 밤이었다.<br>

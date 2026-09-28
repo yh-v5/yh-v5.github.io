@@ -215,7 +215,7 @@ Gotchas:
 
 ## Stories
 
-Short fiction in Korean, written by the owner and polished with an LLM. On the site the credit is only ever "polished with an LLM" (no model or vendor name). It is only linked from the header (after Contact); nothing about it appears on the home page. Titles and descriptions are in **English**; the story text stays Korean. The list shows each story as number, title, one-line description (plus chapter count, reading time, year).
+Short fiction in Korean, written by the owner and polished with an LLM. On the site the credit is only ever "polished with an LLM" (no model or vendor name). It is only linked from the header (after Contact); nothing about it appears on the home page. Titles and descriptions are in **English**; the story text stays Korean. The list shows each story as number, title and one key sentence quoted verbatim from the story in Korean (`line`; plus chapter count, reading time, year). The story page shows the English title and the one-line English `description`.
 
 | Piece                       | File                                                                         |
 | --------------------------- | ---------------------------------------------------------------------------- |
@@ -228,7 +228,8 @@ Short fiction in Korean, written by the owner and polished with an LLM. On the s
 
 ```bash
 python3 bin/import_story.py EXPORT.html --slug <latin-slug> --year 2026 --num 03 \
-  --title "English Title" --description "One line in English."
+  --title "English Title" --description "One line in English." \
+  --line "본문에서 그대로 옮긴 핵심 문장 하나."
 ```
 
 This writes `_stories/<slug>.md` with the front matter (`title`, `title_ko` (the export's h1, not shown), `num`, `year`, `date`, `description`). An all-italic first paragraph (subtitle) is dropped. Chapter titles are rewritten without em dashes or middle dots (`1 · 제목` → `1. 제목`, `제목 — 부제` → `제목: 부제`, `제목 — 〈연재명〉 N 번째` → a `<small>` second line), and any `—` / `·` left in the prose are printed so they can be fixed by hand. The list is sorted newest first by `date` (`YEAR-01-01`; set a real date to order two stories from the same year). Chapter count, reading time and the table of contents are computed from the rendered chapters (`## … {#ch-N}`), so nothing else needs editing. A story written directly in Markdown works too, as long as it follows the same conventions.

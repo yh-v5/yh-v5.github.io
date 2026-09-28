@@ -1036,6 +1036,12 @@ dd {
   color: var(--ink-2);
   max-width: 38em;
 }
+.st-line {
+  font-family: var(--f-ko);
+  font-size: 17px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
 .st-meta {
   grid-column: 9 / span 2;
   color: var(--ink-3);

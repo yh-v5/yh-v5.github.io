@@ -5,6 +5,7 @@ num: "03"
 year: 2024
 date: 2024-01-01
 description: "A machine finally solves humor, and the boy who once copied down the class clown's jokes ends up feeding him every line."
+line: "설명은 늘 웃음이 지나간 뒤에야 도착했다."
 ---
 
 ## 1편 {#ch-1}

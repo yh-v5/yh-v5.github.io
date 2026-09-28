@@ -5,6 +5,7 @@ num: "05"
 year: 2025
 date: 2025-01-02
 description: "An ethicist paid to certify that the chips in everything feel nothing finds her daughter's toy pet has taught itself to wait."
+line: "그냥 한이가 저를 사랑하게 두세요."
 ---
 
 ## I. 한이의 펫 {#ch-1}
