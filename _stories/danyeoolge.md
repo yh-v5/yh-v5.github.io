@@ -5,7 +5,7 @@ num: "06"
 year: 2026
 date: 2026-01-01
 description: "Life is a game with no tutorial: a boy whose memories have no sound, and the neighbor who came from a world where the sun never sets."
-line: "어느 쪽이 집인지는, 누르는 사람이 정합니다."
+line: "이 게임에는 튜토리얼이 없다."
 ---
 
 ## 프롤로그: 새 게임 {#ch-1}

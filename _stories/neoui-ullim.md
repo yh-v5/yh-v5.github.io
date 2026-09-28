@@ -5,7 +5,7 @@ num: "01"
 year: 2021
 date: 2021-01-01
 description: "A pilot adrift where one minute lasts nine days on Earth, and the one person who knows the rhythm of those tapping fingers."
-line: "너의 울림은, 내 손등 위에 있었으니까."
+line: "네 시간 사십구 분 오십이 초마다, 너는 나를 불렀다."
 ---
 
 ## 프롤로그: 선내 시간 00:00 {#ch-1}
