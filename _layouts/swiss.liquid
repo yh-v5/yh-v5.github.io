@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <head>
+    <script>
+      // Apply saved theme / grid before first paint.
+      (function () {
+        var d = document.documentElement;
+        try {
+          var t = localStorage.getItem('yh-theme');
+          if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+          if (localStorage.getItem('yh-grid') === 'on') d.classList.add('grid-on');
+        } catch (e) {}
+      })();
+    </script>
+    {% include metadata.liquid %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter+Tight:wght@400..800&family=Inter:wght@400..700&family=Space+Mono:wght@400;700&display=swap"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    >
+    <link rel="stylesheet" href="{{ '/assets/swiss/swiss.css' | relative_url | bust_file_cache }}">
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/swiss/favicon.svg' | relative_url | bust_file_cache }}">
+    <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+    {% if site.enable_google_analytics %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', '{{ site.google_analytics }}');
+      </script>
+    {% endif %}
+  </head>
+  <body id="top">
+    <a class="skip mono" href="#main">Skip to content</a>
+    {% include swiss/header.liquid %}
+    <main id="main" class="wrap">
+      {{ content }}
+    </main>
+    {% include swiss/footer.liquid %}
+    <div class="grid-overlay" aria-hidden="true">
+      <div class="wrap g">
+        {%- for i in (1..12) -%}
+          <span data-n="{{ i | prepend: '0' | slice: -2, 2 }}"></span>
+        {%- endfor -%}
+      </div>
+    </div>
+    <script src="{{ '/assets/swiss/swiss.js' | relative_url | bust_file_cache }}" defer></script>
+  </body>
+</html>

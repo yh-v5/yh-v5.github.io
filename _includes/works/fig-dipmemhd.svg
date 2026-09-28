@@ -1,0 +1,174 @@
+<svg class="bp" viewBox="0 0 960 540" role="img" aria-labelledby="t-02 d-02" xmlns="http://www.w3.org/2000/svg">
+<title id="t-02">DiP-MEMHD: pruning dimensions to fit a compact IMC array</title>
+<desc id="d-02">Schematic. A long class hypervector of D dimensions is pruned to D-prime, the number of array rows, using calibration and variance-based weighting. Each class occupies several centroid columns, so the whole compact array is used in one search cycle.</desc>
+<defs><marker id="ah-02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="bp-fill" d="M0 0 L10 5 L0 10 z"/></marker><pattern id="hatch-02" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="bp-hatchline" x1="0" y1="0" x2="0" y2="7"/></pattern></defs>
+<rect class="bp-hair" x="10" y="10" width="940" height="520"/>
+<rect class="bp-ln2" x="24" y="24" width="912" height="492"/>
+<line class="bp-ln" x1="15" y1="24" x2="33" y2="24"/>
+<line class="bp-ln" x1="24" y1="15" x2="24" y2="33"/>
+<line class="bp-ln" x1="927" y1="24" x2="945" y2="24"/>
+<line class="bp-ln" x1="936" y1="15" x2="936" y2="33"/>
+<line class="bp-ln" x1="15" y1="516" x2="33" y2="516"/>
+<line class="bp-ln" x1="24" y1="507" x2="24" y2="525"/>
+<line class="bp-ln" x1="927" y1="516" x2="945" y2="516"/>
+<line class="bp-ln" x1="936" y1="507" x2="936" y2="525"/>
+<text class="bp-tb" x="44" y="56">FIG. 02 — DIMENSION PRUNING</text>
+<rect class="bp-ln" x="636" y="468" width="300" height="48"/>
+<line class="bp-ln" x1="716" y1="468" x2="716" y2="516"/>
+<line class="bp-ln" x1="856" y1="468" x2="856" y2="516"/>
+<line class="bp-hair" x1="636" y1="492" x2="936" y2="492"/>
+<text class="bp-t3" x="644" y="484">FIG.</text>
+<text class="bp-t" x="644" y="508">02</text>
+<text class="bp-t3" x="724" y="484">SUBJECT</text>
+<text class="bp-t" x="724" y="508">DIP-MEMHD</text>
+<text class="bp-t3" x="864" y="484">SCALE</text>
+<text class="bp-t" x="864" y="508">N.T.S.</text>
+<rect class="bp-pruned" x="70" y="92" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-on" x="70" y="108" width="26" height="13"/>
+<rect class="bp-pruned" x="70" y="124" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-pruned" x="70" y="140" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-on" x="70" y="156" width="26" height="13"/>
+<rect class="bp-pruned" x="70" y="172" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-on" x="70" y="188" width="26" height="13"/>
+<rect class="bp-pruned" x="70" y="204" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-pruned" x="70" y="220" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-on" x="70" y="236" width="26" height="13"/>
+<rect class="bp-pruned" x="70" y="252" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-pruned" x="70" y="268" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-pruned" x="70" y="284" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-on" x="70" y="300" width="26" height="13"/>
+<rect class="bp-pruned" x="70" y="316" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-on" x="70" y="332" width="26" height="13"/>
+<rect class="bp-pruned" x="70" y="348" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-pruned" x="70" y="364" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-on" x="70" y="380" width="26" height="13"/>
+<rect class="bp-pruned" x="70" y="396" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-pruned" x="70" y="412" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-on" x="70" y="428" width="26" height="13"/>
+<rect class="bp-pruned" x="70" y="444" width="26" height="13" fill="url(#hatch-02)"/>
+<rect class="bp-pruned" x="70" y="460" width="26" height="13" fill="url(#hatch-02)"/>
+<line class="bp-dim" x1="54" y1="92" x2="54" y2="473"/>
+<line class="bp-dim" x1="49" y1="92" x2="59" y2="92"/>
+<line class="bp-dim" x1="49" y1="473" x2="59" y2="473"/>
+<text class="bp-t2" x="44" y="282.5" text-anchor="middle" transform="rotate(-90 44 282.5)">D DIMENSIONS</text>
+<text class="bp-t2" x="66" y="80">CLASS HV</text>
+<line class="bp-ln" x1="118" y1="260" x2="238" y2="260" marker-end="url(#ah-02)"/>
+<text class="bp-t" x="178" y="246" text-anchor="middle">PRUNE</text>
+<text class="bp-t3" x="178" y="280" text-anchor="middle">CALIBRATION +</text>
+<text class="bp-t3" x="178" y="294" text-anchor="middle">VARIANCE WEIGHT</text>
+<rect class="bp-on" x="262" y="120" width="22" height="17"/>
+<line class="bp-hair" x1="284" y1="128.5" x2="330" y2="128.5"/>
+<rect class="bp-on" x="262" y="157" width="22" height="17"/>
+<line class="bp-hair" x1="284" y1="165.5" x2="330" y2="165.5"/>
+<rect class="bp-on" x="262" y="194" width="22" height="17"/>
+<line class="bp-hair" x1="284" y1="202.5" x2="330" y2="202.5"/>
+<rect class="bp-on" x="262" y="231" width="22" height="17"/>
+<line class="bp-hair" x1="284" y1="239.5" x2="330" y2="239.5"/>
+<rect class="bp-on" x="262" y="268" width="22" height="17"/>
+<line class="bp-hair" x1="284" y1="276.5" x2="330" y2="276.5"/>
+<rect class="bp-on" x="262" y="305" width="22" height="17"/>
+<line class="bp-hair" x1="284" y1="313.5" x2="330" y2="313.5"/>
+<rect class="bp-on" x="262" y="342" width="22" height="17"/>
+<line class="bp-hair" x1="284" y1="350.5" x2="330" y2="350.5"/>
+<rect class="bp-on" x="262" y="379" width="22" height="17"/>
+<line class="bp-hair" x1="284" y1="387.5" x2="330" y2="387.5"/>
+<text class="bp-t" x="273" y="100" text-anchor="middle">D′</text>
+<rect class="bp-t-a" x="330" y="112" width="33" height="33"/>
+<rect class="bp-t-a" x="330" y="149" width="33" height="33"/>
+<rect class="bp-t-a" x="330" y="186" width="33" height="33"/>
+<rect class="bp-t-a" x="330" y="223" width="33" height="33"/>
+<rect class="bp-t-a" x="330" y="260" width="33" height="33"/>
+<rect class="bp-t-a" x="330" y="297" width="33" height="33"/>
+<rect class="bp-t-a" x="330" y="334" width="33" height="33"/>
+<rect class="bp-t-a" x="330" y="371" width="33" height="33"/>
+<text class="bp-t2" x="346.5" y="100" text-anchor="middle">A1</text>
+<rect class="bp-t-a" x="367" y="112" width="33" height="33"/>
+<rect class="bp-t-a" x="367" y="149" width="33" height="33"/>
+<rect class="bp-t-a" x="367" y="186" width="33" height="33"/>
+<rect class="bp-t-a" x="367" y="223" width="33" height="33"/>
+<rect class="bp-t-a" x="367" y="260" width="33" height="33"/>
+<rect class="bp-t-a" x="367" y="297" width="33" height="33"/>
+<rect class="bp-t-a" x="367" y="334" width="33" height="33"/>
+<rect class="bp-t-a" x="367" y="371" width="33" height="33"/>
+<text class="bp-t2" x="383.5" y="100" text-anchor="middle">A2</text>
+<rect class="bp-t-b" x="404" y="112" width="33" height="33"/>
+<rect class="bp-t-b" x="404" y="149" width="33" height="33"/>
+<rect class="bp-t-b" x="404" y="186" width="33" height="33"/>
+<rect class="bp-t-b" x="404" y="223" width="33" height="33"/>
+<rect class="bp-t-b" x="404" y="260" width="33" height="33"/>
+<rect class="bp-t-b" x="404" y="297" width="33" height="33"/>
+<rect class="bp-t-b" x="404" y="334" width="33" height="33"/>
+<rect class="bp-t-b" x="404" y="371" width="33" height="33"/>
+<text class="bp-t2" x="420.5" y="100" text-anchor="middle">B1</text>
+<rect class="bp-t-b" x="441" y="112" width="33" height="33"/>
+<rect class="bp-t-b" x="441" y="149" width="33" height="33"/>
+<rect class="bp-t-b" x="441" y="186" width="33" height="33"/>
+<rect class="bp-t-b" x="441" y="223" width="33" height="33"/>
+<rect class="bp-t-b" x="441" y="260" width="33" height="33"/>
+<rect class="bp-t-b" x="441" y="297" width="33" height="33"/>
+<rect class="bp-t-b" x="441" y="334" width="33" height="33"/>
+<rect class="bp-t-b" x="441" y="371" width="33" height="33"/>
+<text class="bp-t2" x="457.5" y="100" text-anchor="middle">B2</text>
+<rect class="bp-t-c" x="478" y="112" width="33" height="33"/>
+<rect class="bp-t-c" x="478" y="149" width="33" height="33"/>
+<rect class="bp-t-c" x="478" y="186" width="33" height="33"/>
+<rect class="bp-t-c" x="478" y="223" width="33" height="33"/>
+<rect class="bp-t-c" x="478" y="260" width="33" height="33"/>
+<rect class="bp-t-c" x="478" y="297" width="33" height="33"/>
+<rect class="bp-t-c" x="478" y="334" width="33" height="33"/>
+<rect class="bp-t-c" x="478" y="371" width="33" height="33"/>
+<text class="bp-t2" x="494.5" y="100" text-anchor="middle">C1</text>
+<rect class="bp-t-c" x="515" y="112" width="33" height="33"/>
+<rect class="bp-t-c" x="515" y="149" width="33" height="33"/>
+<rect class="bp-t-c" x="515" y="186" width="33" height="33"/>
+<rect class="bp-t-c" x="515" y="223" width="33" height="33"/>
+<rect class="bp-t-c" x="515" y="260" width="33" height="33"/>
+<rect class="bp-t-c" x="515" y="297" width="33" height="33"/>
+<rect class="bp-t-c" x="515" y="334" width="33" height="33"/>
+<rect class="bp-t-c" x="515" y="371" width="33" height="33"/>
+<text class="bp-t2" x="531.5" y="100" text-anchor="middle">C2</text>
+<rect class="bp-t-d" x="552" y="112" width="33" height="33"/>
+<rect class="bp-t-d" x="552" y="149" width="33" height="33"/>
+<rect class="bp-t-d" x="552" y="186" width="33" height="33"/>
+<rect class="bp-t-d" x="552" y="223" width="33" height="33"/>
+<rect class="bp-t-d" x="552" y="260" width="33" height="33"/>
+<rect class="bp-t-d" x="552" y="297" width="33" height="33"/>
+<rect class="bp-t-d" x="552" y="334" width="33" height="33"/>
+<rect class="bp-t-d" x="552" y="371" width="33" height="33"/>
+<text class="bp-t2" x="568.5" y="100" text-anchor="middle">D1</text>
+<rect class="bp-t-d" x="589" y="112" width="33" height="33"/>
+<rect class="bp-t-d" x="589" y="149" width="33" height="33"/>
+<rect class="bp-t-d" x="589" y="186" width="33" height="33"/>
+<rect class="bp-t-d" x="589" y="223" width="33" height="33"/>
+<rect class="bp-t-d" x="589" y="260" width="33" height="33"/>
+<rect class="bp-t-d" x="589" y="297" width="33" height="33"/>
+<rect class="bp-t-d" x="589" y="334" width="33" height="33"/>
+<rect class="bp-t-d" x="589" y="371" width="33" height="33"/>
+<text class="bp-t2" x="605.5" y="100" text-anchor="middle">D2</text>
+<line class="bp-dim" x1="330" y1="76" x2="622" y2="76"/>
+<line class="bp-dim" x1="330" y1="71" x2="330" y2="81"/>
+<line class="bp-dim" x1="622" y1="71" x2="622" y2="81"/>
+<rect class="bp-paper" x="361.7" y="68" width="228.6" height="16"/>
+<text class="bp-t2" x="476" y="80" text-anchor="middle">COLUMNS = CLASSES × CENTROIDS</text>
+<line class="bp-dim" x1="648" y1="112" x2="648" y2="404"/>
+<line class="bp-dim" x1="643" y1="112" x2="653" y2="112"/>
+<line class="bp-dim" x1="643" y1="404" x2="653" y2="404"/>
+<text class="bp-t2" x="638" y="258" text-anchor="middle" transform="rotate(-90 638 258)">ROWS = D′</text>
+<rect class="bp-off" x="340.5" y="438" width="12" height="10"/>
+<rect class="bp-off" x="377.5" y="426" width="12" height="22"/>
+<rect class="bp-off" x="414.5" y="440" width="12" height="8"/>
+<rect class="bp-off" x="451.5" y="436" width="12" height="12"/>
+<rect class="bp-on" x="488.5" y="418" width="12" height="30"/>
+<rect class="bp-off" x="525.5" y="434" width="12" height="14"/>
+<rect class="bp-off" x="562.5" y="439" width="12" height="9"/>
+<rect class="bp-off" x="599.5" y="442" width="12" height="6"/>
+<text class="bp-t3" x="330" y="464">SIMILARITY · ONE SEARCH CYCLE → ARGMAX</text>
+<text class="bp-t" x="720" y="118">COMPACT IMC</text>
+<text class="bp-t2" x="720" y="136">64 × 64 · 128 × 128</text>
+<text class="bp-t" x="720" y="184">+22.4% ACC.</text>
+<text class="bp-t2" x="720" y="202">VS. BINARY HDC</text>
+<text class="bp-t" x="720" y="250">6–8× ENERGY</text>
+<text class="bp-t2" x="720" y="268">EFFICIENCY</text>
+<text class="bp-t" x="720" y="316">+2.47% ACC.</text>
+<text class="bp-t2" x="720" y="334">VS. PRUNING METRICS</text>
+</svg>

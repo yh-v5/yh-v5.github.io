@@ -1,0 +1,188 @@
+---
+layout: swiss
+---
+{%- comment -%}
+  Exhibit page for one work. jekyll-scholar generates one page per BibTeX
+  entry from this file (scholar.details_layout), with the
+  entry available as page.entry, at /works/<bibtex key>/. Exhibit-only data
+  (and catalogue order for prev/next) comes from _data/works.yml.
+  This file must keep the .html extension: jekyll-scholar only looks for
+  details layouts named *.html.
+{%- endcomment -%}
+{%- assign e = page.entry -%}
+{%- assign work = site.data.works | where: 'key', e.key | first -%}
+{%- assign total = site.data.works | size -%}
+{%- assign idx = 0 -%}
+{%- for w in site.data.works -%}
+  {%- if w.key == e.key -%}{%- assign idx = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+{%- assign works_base = '/' | append: site.scholar.details_dir | append: '/' -%}
+{%- if idx > 0 -%}
+  {%- assign pi = idx | minus: 1 -%}
+  {%- assign prev_work = site.data.works[pi] -%}
+{%- endif -%}
+{%- assign ni = idx | plus: 1 -%}
+{%- if ni < total -%}
+  {%- assign next_work = site.data.works[ni] -%}
+{%- endif -%}
+{%- if e.type == 'article' -%}
+  {%- assign venue = e.journal -%}
+{%- else -%}
+  {%- assign venue = e.booktitle -%}
+{%- endif -%}
+
+<div class="ex-crumb g mono">
+  <div class="l">
+    <a href="{{ '/' | relative_url }}">Index</a> / <a href="{{ '/publications/' | relative_url }}">Works</a> / {{ work.num }}
+  </div>
+  <div class="r">
+    <span>Exhibit {{ work.num }} of {{ total | prepend: '0' | slice: -2, 2 }}</span>
+    <span>{{ work.status }}</span>
+  </div>
+</div>
+
+<header class="ex-head g">
+  <div class="ex-no" aria-hidden="true">{{ work.num }}</div>
+  <div class="ex-title-wrap">
+    <div class="ex-short mono">
+      <span class="tag">{{ work.venue_short | default: e.abbr }}</span>
+      {%- if work.status contains 'Early' %}<span class="tag solid">Early Access</span>{% endif %}
+      <span class="dim">{{ work.short }}</span>
+    </div>
+    <h1 class="ex-title{% if e.title_en %} ko{% endif %}"{% if e.title_en %} lang="ko"{% endif %}>{{ e.title }}</h1>
+    {%- if e.title_en %}
+      <p class="ex-title-en">{{ e.title_en }}</p>
+    {%- endif %}
+    {%- if work.statement %}
+      <p class="ex-statement">{{ work.statement }}</p>
+    {%- endif %}
+  </div>
+</header>
+
+<div class="ex-body g">
+  <aside class="ex-cap" aria-label="Wall caption">
+    <dl class="cap">
+      <div class="cap-row">
+        <dt>Authors</dt>
+        <dd>{% include swiss/authors.liquid authors=e.author_array %}</dd>
+      </div>
+      <div class="cap-row">
+        <dt>Title</dt>
+        <dd>{{ work.short }}</dd>
+      </div>
+      <div class="cap-row">
+        <dt>Venue</dt>
+        <dd>{{ venue }}{% if e.location %}, {{ e.location }}{% endif %}</dd>
+      </div>
+      <div class="cap-row">
+        <dt>Year</dt>
+        <dd>{% if e.month %}{{ e.month | capitalize | slice: 0, 3 }} {% endif %}{{ e.year }}</dd>
+      </div>
+      {%- if work.medium %}
+        <div class="cap-row">
+          <dt>Medium</dt>
+          <dd>{{ work.medium }}</dd>
+        </div>
+      {%- endif %}
+      {%- if work.substrate %}
+        <div class="cap-row">
+          <dt>Platform</dt>
+          <dd>{{ work.substrate }}</dd>
+        </div>
+      {%- endif %}
+      {%- if e.doi %}
+        <div class="cap-row">
+          <dt>DOI</dt>
+          <dd><a class="u-link" href="https://doi.org/{{ e.doi }}">{{ e.doi }}</a></dd>
+        </div>
+      {%- endif %}
+    </dl>
+    <div class="ex-links">
+      {%- if e.doi %}<a class="btn primary" href="https://doi.org/{{ e.doi }}">Read paper ↗</a>{% endif %}
+      {%- if e.pdf %}
+        <a class="btn" href="{% if e.pdf contains '://' %}{{ e.pdf }}{% else %}{{ e.pdf | prepend: '/assets/pdf/' | relative_url }}{% endif %}">PDF</a>
+      {%- endif %}
+      {%- if e.arxiv %}<a class="btn" href="https://arxiv.org/abs/{{ e.arxiv }}">arXiv</a>{% endif %}
+      {%- if e.code %}<a class="btn" href="{{ e.code }}">Code</a>{% endif %}
+      <a class="btn" href="#cite">Cite</a>
+    </div>
+  </aside>
+
+  <div class="ex-main">
+    {%- if work.figure %}
+      <figure class="plate">
+        <div class="plate-bar mono">
+          <span>Fig. {{ work.num }}</span>
+          <span>Schematic</span>
+        </div>
+        <div class="plate-img">{% include {{ work.figure }} %}</div>
+        {%- if work.figure_caption %}
+          <figcaption>
+            <span class="mono">Fig. {{ work.num }}</span>
+            <span>{{ work.figure_caption }}</span>
+          </figcaption>
+        {%- endif %}
+      </figure>
+    {%- endif %}
+
+    {%- if work.specs %}
+      <section class="spec" aria-labelledby="spec-h">
+        <div class="spec-h">
+          <h2 id="spec-h">Specifications</h2>
+          <span class="mono dim">As reported in the paper</span>
+        </div>
+        <table>
+          <tbody>
+            {%- for s in work.specs %}
+              <tr>
+                <th scope="row">{{ s.label }}</th>
+                <td>{{ s.value }}</td>
+              </tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </section>
+    {%- endif %}
+
+    {%- if e.abstract %}
+      <section class="abstract" aria-labelledby="abs-h">
+        <div class="sub-h">
+          <h2 id="abs-h">Abstract</h2>
+          <span class="mono dim">{{ work.venue_short | default: e.abbr }}</span>
+        </div>
+        <div class="prose"><p>{{ e.abstract }}</p></div>
+        {%- if e.annotation %}
+          <p class="note-row mono">{{ e.annotation }}</p>
+        {%- endif %}
+      </section>
+    {%- endif %}
+
+    <section class="cite" id="cite" aria-labelledby="cite-h">
+      <div class="sub-h">
+        <h2 id="cite-h">Cite</h2>
+        <button type="button" class="btn" data-copy="bib-{{ e.key }}">Copy BibTeX</button>
+      </div>
+      <pre><code id="bib-{{ e.key }}">{{ e.bibtex | hideCustomBibtex | strip | xml_escape }}</code></pre>
+    </section>
+  </div>
+</div>
+
+<nav class="ex-nav g mono" aria-label="Other works">
+  <div class="prev">
+    {%- if prev_work %}
+      <a href="{{ works_base | append: prev_work.key | append: '/' | relative_url }}">
+        ← {{ prev_work.num }}<span class="t">{{ prev_work.short }}</span>
+      </a>
+    {%- endif %}
+  </div>
+  <div class="idx">
+    <a href="{{ '/publications/' | relative_url }}">All works<span class="t">Index</span></a>
+  </div>
+  <div class="next">
+    {%- if next_work %}
+      <a href="{{ works_base | append: next_work.key | append: '/' | relative_url }}">
+        {{ next_work.num }} →<span class="t">{{ next_work.short }}</span>
+      </a>
+    {%- endif %}
+  </div>
+</nav>

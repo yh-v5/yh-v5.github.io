@@ -300,8 +300,10 @@ scholar:
   replace_strings: true
   join_strings: true
 
-  details_dir: bibliography
-  details_link: Details
+  details_dir: works
+  details_layout: exhibit.html
+  details_permalink: /:details_dir/:key/
+  details_link: false
 
   query: "@*"
   group_by: year
@@ -342,6 +344,7 @@ filtered_bibtex_keywords:
     selected,
     slides,
     supp,
+    title_en,
     video,
     website,
   ]

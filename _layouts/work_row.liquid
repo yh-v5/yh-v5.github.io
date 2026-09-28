@@ -1,0 +1,43 @@
+---
+---
+{%- comment -%}
+  jekyll-scholar template for one row of the works index.
+  Used as {% bibliography -T work_row --group_by none %}.
+{%- endcomment -%}
+{%- assign work = site.data.works | where: 'key', entry.key | first -%}
+{%- assign exhibit = '/' | append: site.scholar.details_dir | append: '/' | append: entry.key | append: '/' | relative_url -%}
+<article class="wr g">
+  <div class="wr-no" aria-label="Work {{ work.num }}">{{ work.num | default: '—' }}</div>
+  <div class="wr-main">
+    <a class="wr-title{% if entry.title_en %} ko{% endif %}" href="{{ exhibit }}">{{ entry.title }}</a>
+    {%- if entry.title_en %}
+      <div class="wr-title-en">{{ entry.title_en }}</div>
+    {%- endif %}
+    <div class="wr-authors">{% include swiss/authors.liquid authors=entry.author_array %}</div>
+  </div>
+  <div class="wr-venue">
+    <span class="tag">{{ work.venue_short | default: entry.abbr }}</span>
+    {% if work.status contains 'Early' -%}
+      <span class="tag solid">Early Access</span>
+    {%- endif %}
+    <span class="wr-venue-full">
+      {%- if entry.type == 'article' -%}{{ entry.journal }}{%- else -%}{{ entry.booktitle }}{%- endif -%}
+    </span>
+  </div>
+  <div class="wr-year mono">{{ entry.year }}</div>
+  <div class="wr-links mono">
+    <a class="go" href="{{ exhibit }}">Exhibit →</a>
+    {%- if entry.doi -%}
+      <a href="https://doi.org/{{ entry.doi }}">DOI</a>
+    {%- endif %}
+    {%- if entry.arxiv -%}
+      <a href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>
+    {%- endif %}
+    {%- if entry.pdf %}
+      <a href="{% if entry.pdf contains '://' %}{{ entry.pdf }}{% else %}{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}{% endif %}">PDF</a>
+    {%- endif %}
+    {%- if entry.code -%}
+      <a href="{{ entry.code }}">Code</a>
+    {%- endif %}
+  </div>
+</article>
