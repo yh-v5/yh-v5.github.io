@@ -119,7 +119,9 @@ def is_all_italic(raw):
 
 def md_inline(line):
     t = html.escape(line.strip())
-    t = re.sub(r"(?<![\\\w])([*_])(?!\s)(.+?)(?<![\s\\])\1(?!\w)", r"<em>\2</em>", t)
+    # *…* may sit inside a word (Korean particles follow it: *강조*라고); _…_ may not
+    t = re.sub(r"(?<!\\)\*(?![\s*])(.+?)(?<![\s\\])\*", r"<em>\1</em>", t)
+    t = re.sub(r"(?<![\\\w])_(?!\s)(.+?)(?<![\s\\])_(?!\w)", r"<em>\1</em>", t)
     return re.sub(r"\\(.)", r"\1", t)
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Be Right Back"
 title_ko: "다녀올게"
-num: "04"
+num: "05"
 year: 2026
 date: 2026-01-01
 description: "Life is a game with no tutorial: a boy whose memories have no sound, and the neighbor who came from a world where the sun never sets."
