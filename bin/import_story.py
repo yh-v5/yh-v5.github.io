@@ -3,15 +3,18 @@ written as Markdown / plain text, into _stories/<slug>.md for the Stories sectio
 
 Usage:
     python3 bin/import_story.py EXPORT.html --slug neoui-ullim --year 2021 --num 01 \
-        --title "Your Resonance" --description "One line, in English."
+        --title "Your Resonance" --description "One line, in English." \
+        --line "너의 울림은, 내 손등 위에 있었으니까."
 
 A .md or .txt source uses "# 제목" for the title, "## 장" for chapters, blank
 lines between paragraphs, "> " for quoted blocks, "---" for a rule and *…* or
 _…_ for italics. Every line break inside a paragraph is kept (plain text is
 usually written that way), not only Markdown's two-trailing-space breaks.
 
-The site shows an English title and a one-line English description (list page
-and story header); the export's h1 is kept only as `title_ko`. A first
+The site shows an English title, a one-line English description (story
+header) and, on the list page, one key sentence quoted from the story in Korean
+(`line`, checked to appear in the text); the export's h1 is kept only as
+`title_ko`. A first
 paragraph that is entirely italic (a subtitle) is dropped.
 Chapters (h2) get stable anchors (#ch-1, #ch-2, ...) for the table of contents.
 Line breaks inside a paragraph are kept as hard breaks, and paragraphs that are
@@ -196,6 +199,7 @@ def main():
     ap.add_argument("--num", required=True)
     ap.add_argument("--title", required=True, help="English title shown on the site")
     ap.add_argument("--description", required=True, help="one-line English description")
+    ap.add_argument("--line", help="one key sentence quoted from the story, shown on the list page")
     a = ap.parse_args()
     title_ko, subtitle, body = convert(a.export)
     q = lambda v: '"' + v.replace("\\", "\\\\").replace('"', '\\"') + '"'
@@ -207,8 +211,12 @@ def main():
         f"year: {a.year}",
         f"date: {a.year}-01-01",
         f"description: {q(a.description)}",
-        "---",
     ]
+    if a.line:
+        fm.append(f"line: {q(a.line)}")
+    fm.append("---")
+    if a.line and " ".join(a.line.split()) not in " ".join(re.sub(r"\\(.)|<br>", r"\1", body).split()):
+        print("warning: --line does not appear verbatim in the story")
     dest = os.path.join(ROOT, "_stories", a.slug + ".md")
     os.makedirs(os.path.dirname(dest), exist_ok=True)
     with open(dest, "w", encoding="utf-8") as f:

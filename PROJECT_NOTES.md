@@ -215,7 +215,7 @@ Gotchas:
 
 ## Stories
 
-Short fiction in Korean, written by the owner and polished with an LLM. On the site the credit is only ever "polished with an LLM" (no model or vendor name). It is only linked from the header (after Contact); nothing about it appears on the home page. Titles and descriptions are in **English**; the story text stays Korean. The list shows each story as number, title, one-line description (plus chapter count, reading time, year).
+Short fiction in Korean, written by the owner and polished with an LLM. On the site the credit is only ever "polished with an LLM" (no model or vendor name). It is only linked from the header (after Contact); nothing about it appears on the home page. Titles and descriptions are in **English**; the story text stays Korean. The list shows each story as number, title and one key sentence quoted verbatim from the story in Korean (`line`; plus the year; no chapter count or reading time, by request). The story page shows the English title and the one-line English `description`.
 
 | Piece                       | File                                                                         |
 | --------------------------- | ---------------------------------------------------------------------------- |
@@ -228,12 +228,13 @@ Short fiction in Korean, written by the owner and polished with an LLM. On the s
 
 ```bash
 python3 bin/import_story.py EXPORT.html --slug <latin-slug> --year 2026 --num 03 \
-  --title "English Title" --description "One line in English."
+  --title "English Title" --description "One line in English." \
+  --line "본문에서 그대로 옮긴 핵심 문장 하나."
 ```
 
-This writes `_stories/<slug>.md` with the front matter (`title`, `title_ko` (the export's h1, not shown), `num`, `year`, `date`, `description`). An all-italic first paragraph (subtitle) is dropped. Chapter titles are rewritten without em dashes or middle dots (`1 · 제목` → `1. 제목`, `제목 — 부제` → `제목: 부제`, `제목 — 〈연재명〉 N 번째` → a `<small>` second line), and any `—` / `·` left in the prose are printed so they can be fixed by hand. The list is sorted newest first by `date` (`YEAR-01-01`; set a real date to order two stories from the same year). Chapter count, reading time and the table of contents are computed from the rendered chapters (`## … {#ch-N}`), so nothing else needs editing. A story written directly in Markdown works too, as long as it follows the same conventions.
+This writes `_stories/<slug>.md` with the front matter (`title`, `title_ko` (the export's h1, not shown), `num`, `year`, `date`, `description`). An all-italic first paragraph (subtitle) is dropped. Chapter titles are rewritten without em dashes or middle dots (`1 · 제목` → `1. 제목`, `제목 — 부제` → `제목: 부제`, `제목 — 〈연재명〉 N 번째` → a `<small>` second line), and any `—` / `·` left in the prose are printed so they can be fixed by hand. The list is sorted newest first by `date` (`YEAR-01-01`; set a real date to order two stories from the same year). Chapter count and the table of contents are computed from the rendered chapters (`## … {#ch-N}`), so nothing else needs editing. A story written directly in Markdown works too, as long as it follows the same conventions.
 
-Current stories: 01 "Your Resonance" (너의 울림, 2021), 02 "Dawn" (새벽, 2022, no chapters), 03 "The Last Digit" (끝자리, 2025, no chapters), 04 "Common Chip" (보통 칩, 2025, dated 2025-01-02 to sort after 끝자리), 05 "Be Right Back" (다녀올게, 2026). Numbers follow the year the story was written, so a new story may push later ones up by one (URLs use the slug, so nothing breaks). A story without `##` chapters just has no contents list.
+Current stories: 01 "Your Resonance" (너의 울림, 2021), 02 "Dawn" (새벽, 2022, no chapters), 03 "NLP" (2024, 8 parts "1편"…"8편", first posted as Instagram captions; the copy-tool intro and "[NLP - n/8]" labels were dropped), 04 "The Last Digit" (끝자리, 2025, no chapters), 05 "Common Chip" (보통 칩, 2025, dated 2025-01-02 to sort after 끝자리), 06 "Be Right Back" (다녀올게, 2026). Numbers follow the year the story was written, so a new story may push later ones up by one (URLs use the slug, so nothing breaks). A story without `##` chapters just has no contents list.
 
 Gotchas:
 

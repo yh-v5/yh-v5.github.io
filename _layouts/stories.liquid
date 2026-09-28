@@ -3,7 +3,9 @@ layout: swiss
 ---
 {%- comment -%}
   Stories index (/stories/). Not linked from the home page; reached from the
-  header nav. Each story lives in _stories/ (see bin/import_story.py).
+  header nav. Each story lives in _stories/ (see bin/import_story.py). Under
+  each title the list quotes one key sentence from the story (`line`, Korean);
+  the English `description` is used on the story page.
 {%- endcomment -%}
 {%- assign stories = site.stories | sort: 'date' | reverse -%}
 
@@ -21,17 +23,15 @@ layout: swiss
 <section class="sec" aria-label="Stories">
   <div class="st-list">
     {%- for s in stories %}
-      {%- assign chars = s.content | strip_html | size -%}
-      {%- assign mins = chars | divided_by: 3000.0 | round | times: 5 | at_least: 5 -%}
-      {%- assign chapters = s.content | split: '<h2' | size | minus: 1 %}
       <a class="st-row g" href="{{ s.url | relative_url }}">
         <span class="st-no">{{ s.num }}</span>
         <span class="st-main">
           <span class="st-title">{{ s.title }}</span>
-          <span class="st-desc">{{ s.description }}</span>
-        </span>
-        <span class="st-meta mono">
-          {%- if chapters > 0 %}{{ chapters }} chapters / {% endif %}~{{ mins }} min
+          {%- if s.line %}
+            <span class="st-desc st-line" lang="ko">“{{ s.line }}”</span>
+          {%- else %}
+            <span class="st-desc">{{ s.description }}</span>
+          {%- endif %}
         </span>
         <span class="st-year mono">{{ s.year }}</span>
         <span class="st-go mono">Read →</span>

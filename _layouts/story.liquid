@@ -7,8 +7,6 @@ layout: swiss
   of contents is built from them. Title and description are in English; the
   story text is Korean.
 {%- endcomment -%}
-{%- assign chars = content | strip_html | size -%}
-{%- assign mins = chars | divided_by: 3000.0 | round | times: 5 | at_least: 5 -%}
 {%- assign parts = content | split: '<h2 id="' -%}
 {%- assign chapter_count = parts | size | minus: 1 -%}
 
@@ -18,7 +16,6 @@ layout: swiss
   <div class="l"><a href="{{ '/' | relative_url }}">Index</a> / <a href="{{ '/stories/' | relative_url }}">Stories</a> / {{ page.num }}</div>
   <div class="r">
     <span>Short story, {{ page.year }}</span>
-    <span>~{{ mins }} min</span>
   </div>
 </div>
 
@@ -38,7 +35,7 @@ layout: swiss
   {%- if chapter_count > 0 %}
     <nav class="story-toc" aria-label="Chapters">
       <details data-open-wide>
-        <summary class="mono">Contents ({{ chapter_count }})</summary>
+        <summary class="mono">Contents</summary>
         <ol lang="ko">
           {%- for part in parts offset: 1 %}
             {%- assign hid = part | split: '"' | first -%}
