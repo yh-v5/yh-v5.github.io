@@ -1,4 +1,4 @@
-// Dark / light switch and BibTeX copy for the neo-Swiss theme.
+// Dark / light switch, BibTeX copy and story reader helpers for the neo-Swiss theme.
 // Dark is the default; a saved "light" choice is applied by an inline script
 // in <head> before first paint.
 (function () {
@@ -43,6 +43,26 @@
       });
     }
   });
+
+  // Stories: open the chapter list on wide screens, and show reading progress.
+  if (window.matchMedia && window.matchMedia("(min-width: 981px)").matches) {
+    document.querySelectorAll("details[data-open-wide]").forEach(function (d) {
+      d.open = true;
+    });
+  }
+  var bar = document.querySelector(".read-progress");
+  var body = document.querySelector(".story-body");
+  if (bar && body) {
+    var update = function () {
+      var r = body.getBoundingClientRect();
+      var total = r.height - window.innerHeight;
+      var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+      bar.style.setProperty("--read", p.toFixed(4));
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
 
   sync();
 })();

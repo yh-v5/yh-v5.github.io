@@ -990,6 +990,225 @@ dd {
   color: var(--blue-ink);
 }
 
+/* ── stories (short fiction, Korean) ────────────────────────────────────── */
+
+.st-list {
+  border-top: 1px solid var(--rule);
+}
+.st-row {
+  padding: 22px 0 24px;
+  border-bottom: 1px solid var(--hair);
+  align-items: baseline;
+  row-gap: 8px;
+}
+.st-row:hover .st-title,
+.st-row:focus-visible .st-title {
+  color: var(--blue-ink);
+}
+.st-no {
+  grid-column: 1 / span 1;
+  font-family: var(--f-wide);
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--blue-ink);
+}
+.st-main {
+  grid-column: 2 / span 7;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.st-title {
+  font-family: var(--f-ko);
+  font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 46px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  transition: color 0.15s;
+}
+.st-sub {
+  font-family: var(--f-ko);
+  font-size: 16px;
+  color: var(--ink-2);
+}
+.st-open {
+  font-family: var(--f-ko);
+  font-size: 14.5px;
+  color: var(--ink-3);
+}
+.st-meta {
+  grid-column: 9 / span 2;
+  color: var(--ink-3);
+}
+.st-year {
+  grid-column: 11 / span 1;
+}
+.st-go {
+  grid-column: 12 / span 1;
+  text-align: right;
+  color: var(--blue-ink);
+}
+
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 50;
+  pointer-events: none;
+}
+.read-progress span {
+  display: block;
+  height: 100%;
+  width: calc(var(--read, 0) * 100%);
+  background: var(--blue);
+}
+.story-head {
+  margin-top: clamp(28px, 5vw, 60px);
+  align-items: start;
+  row-gap: 18px;
+}
+.story-title-wrap {
+  grid-column: 4 / span 9;
+}
+.story-title {
+  font-family: var(--f-ko);
+  font-weight: 800;
+  font-size: clamp(40px, 5.6vw, 92px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  word-break: keep-all;
+}
+.story-sub {
+  margin-top: 16px;
+  font-family: var(--f-ko);
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.story-wrap {
+  margin-top: clamp(40px, 5vw, 72px);
+  align-items: start;
+  row-gap: 32px;
+}
+.story-toc {
+  grid-column: 1 / span 3;
+  position: sticky;
+  top: 76px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+.story-toc summary {
+  list-style: none;
+  cursor: pointer;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-3);
+}
+.story-toc summary::-webkit-details-marker {
+  display: none;
+}
+.story-toc summary::after {
+  content: " +";
+}
+.story-toc details[open] summary::after {
+  content: " −";
+}
+.story-toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.story-toc li a {
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hair);
+  font-family: var(--f-ko);
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--ink-2);
+  word-break: keep-all;
+}
+.story-toc li a:hover {
+  color: var(--blue-ink);
+}
+.story-body {
+  grid-column: 4 / span 7;
+  min-width: 0;
+  font-family: var(--f-ko);
+  font-size: 18px;
+  line-height: 1.95;
+  letter-spacing: -0.005em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.story-body p {
+  margin: 0 0 1.15em;
+}
+.story-body h2 {
+  margin: 3.2em 0 1.4em;
+  padding-top: 14px;
+  border-top: 2px solid var(--rule);
+  font-family: var(--f-ko);
+  font-weight: 700;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  scroll-margin-top: 80px;
+}
+.story-body > h2:first-child {
+  margin-top: 0;
+}
+.story-body hr {
+  height: auto;
+  margin: 2.6em 0;
+  border: 0;
+  text-align: center;
+}
+.story-body hr::after {
+  content: "· · ·";
+  font-family: var(--f-mono);
+  letter-spacing: 0.5em;
+  color: var(--ink-3);
+}
+/* a chapter heading already draws a rule, so drop the break right before it */
+.story-body hr:has(+ h2) {
+  display: none;
+}
+.story-body p.sep {
+  margin: 2.2em 0;
+  text-align: center;
+  color: var(--blue-ink);
+}
+.story-body blockquote {
+  margin: 1.5em 0;
+  padding: 0.1em 0 0.1em 1.1em;
+  border-left: 2px solid var(--blue);
+  font-size: 0.94em;
+  color: var(--ink-2);
+}
+.story-body blockquote p:last-child {
+  margin-bottom: 0;
+}
+.story-end {
+  margin-top: 72px;
+}
+.story-end-in {
+  grid-column: 4 / span 7;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-top: 12px;
+  border-top: 2px solid var(--rule);
+  color: var(--ink-3);
+}
+
 /* ── blueprint figures (inline SVG, see _includes/works/) ───────────────── */
 
 .bp {
@@ -1168,6 +1387,29 @@ dd {
   .ex-main {
     grid-column: 1 / -1;
   }
+  .story-toc {
+    grid-column: 1 / -1;
+    position: static;
+    max-height: none;
+  }
+  .story-body,
+  .story-end-in {
+    grid-column: 1 / span 10;
+  }
+  /* the collapsed contents bar already rules off the top */
+  .story-body > h2:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .st-main {
+    grid-column: 2 / span 7;
+  }
+  .st-meta {
+    grid-column: 9 / span 3;
+  }
+  .st-year {
+    display: none;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1289,8 +1531,28 @@ dd {
   .ex-no {
     grid-column: 1 / -1;
   }
-  .ex-title-wrap {
+  .ex-title-wrap,
+  .story-title-wrap,
+  .story-body,
+  .story-end-in {
     grid-column: 1 / -1;
+  }
+  .story-body {
+    font-size: 17px;
+    line-height: 1.9;
+  }
+  .st-no {
+    grid-column: 1 / span 1;
+    font-size: 26px;
+  }
+  .st-main {
+    grid-column: 2 / span 3;
+  }
+  .st-meta {
+    grid-column: 2 / span 2;
+  }
+  .st-go {
+    grid-column: 4 / span 1;
   }
   .ex-nav .prev,
   .ex-nav .next {

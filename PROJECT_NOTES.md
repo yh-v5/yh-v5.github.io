@@ -213,6 +213,30 @@ Gotchas:
 - Don't look up other exhibit pages through `site.pages` from the exhibit layout: jekyll-scholar renders details pages during generation, before all of them exist. Prev/next links are built from `_data/works.yml` instead.
 - Screenshots in a sandbox without font CDN access will show fallback fonts; that is not a site bug.
 
+## Stories
+
+Short fiction in Korean, written by the owner and edited with Claude (structure, pacing, rough edges). It is only linked from the header (after Contact); nothing about it appears on the home page.
+
+| Piece                       | File                                                                         |
+| --------------------------- | ---------------------------------------------------------------------------- |
+| Story files (one per story) | `_stories/<slug>.md` — collection `stories`, served at `/stories/<slug>/`    |
+| List page                   | `_pages/stories.md` (`/stories/`, `nav: false`) → `_layouts/stories.liquid`  |
+| Reader page                 | `_layouts/story.liquid` (default layout for the collection in `_config.yml`) |
+| Importer                    | `bin/import_story.py`                                                        |
+
+**To add a story:** export it as HTML (one `h1` title, optional all-italic first paragraph as subtitle, `h2` chapters, `p` / `hr` / `blockquote` / `em`), then
+
+```bash
+python3 bin/import_story.py EXPORT.html --slug <latin-slug> --year 2026 --num 03
+```
+
+This writes `_stories/<slug>.md` with the front matter (`title`, `num`, `year`, `date`, `subtitle`, `opening`, `description`). The list is sorted newest first by `date` (`YEAR-01-01`; set a real date to order two stories from the same year). Chapter count, reading time and the table of contents are computed from the rendered chapters (`## … {#ch-N}`), so nothing else needs editing. A story written directly in Markdown works too, as long as it follows the same conventions.
+
+Gotchas:
+
+- kramdown here has `hard_wrap: false`, so line breaks inside a paragraph are written as `<br>`. Scene-break paragraphs (`◇`, `* * *`, …) carry `{: .sep}`.
+- `_stories/` is in `.prettierignore`: Prettier would rewrite whole-line `*italics*` to `_italics_`, and the importer's output is the source of truth.
+
 ## News
 
 News items live in `_news/` (one file per item, `inline: true`, `date:` in front matter). `announcements.enabled: true` in `_pages/about.md` shows the latest 5 on the home page; the full list is at `/news/` (`_pages/news.md`, `nav: false`).
