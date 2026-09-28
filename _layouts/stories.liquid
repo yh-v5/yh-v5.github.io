@@ -23,9 +23,6 @@ layout: swiss
 <section class="sec" aria-label="Stories">
   <div class="st-list">
     {%- for s in stories %}
-      {%- assign chars = s.content | strip_html | size -%}
-      {%- assign mins = chars | divided_by: 3000.0 | round | times: 5 | at_least: 5 -%}
-      {%- assign chapters = s.content | split: '<h2' | size | minus: 1 %}
       <a class="st-row g" href="{{ s.url | relative_url }}">
         <span class="st-no">{{ s.num }}</span>
         <span class="st-main">
@@ -35,9 +32,6 @@ layout: swiss
           {%- else %}
             <span class="st-desc">{{ s.description }}</span>
           {%- endif %}
-        </span>
-        <span class="st-meta mono">
-          {%- if chapters > 0 %}{{ chapters }} chapters / {% endif %}~{{ mins }} min
         </span>
         <span class="st-year mono">{{ s.year }}</span>
         <span class="st-go mono">Read →</span>

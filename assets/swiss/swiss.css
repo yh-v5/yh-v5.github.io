@@ -1042,10 +1042,6 @@ dd {
   line-height: 1.6;
   word-break: keep-all;
 }
-.st-meta {
-  grid-column: 9 / span 2;
-  color: var(--ink-3);
-}
 .st-year {
   grid-column: 11 / span 1;
 }
@@ -1425,12 +1421,6 @@ dd {
   .st-main {
     grid-column: 2 / span 7;
   }
-  .st-meta {
-    grid-column: 9 / span 3;
-  }
-  .st-year {
-    display: none;
-  }
 }
 
 @media (max-width: 720px) {
@@ -1569,8 +1559,9 @@ dd {
   .st-main {
     grid-column: 2 / span 3;
   }
-  .st-meta {
+  .st-year {
     grid-column: 2 / span 2;
+    color: var(--ink-3);
   }
   .st-go {
     grid-column: 4 / span 1;
