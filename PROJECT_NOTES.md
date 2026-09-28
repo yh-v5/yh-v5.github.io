@@ -1,6 +1,6 @@
 # Project Notes — yh-v5.github.io
 
-> **Status (2026-09-28):** Site is live. All three publications are now published with DOIs (MEMHD/DATE '25, HyperSPACE/ISLPED '26, DiP-MEMHD/IEEE IoT-J '26). The news section on the about page is enabled with three items. Navigation is intentionally minimal (about + publications). CV, projects and blog are still hidden behind `nav: false` until their content is filled in.
+> **Status (2026-09-28):** Site is live. All three publications are now published with DOIs (MEMHD/DATE '25, HyperSPACE/ISLPED '26, DiP-MEMHD/IEEE IoT-J '26). The news section on the about page is enabled with four items. Navigation is intentionally minimal (about + publications). CV, projects and blog are still hidden behind `nav: false` until their content is filled in.
 
 > **For the next agent:** This file is excluded from the published site (see `_config.yml` exclude list). Skim this end-to-end before touching anything. Then re-read [`AGENTS.md`](AGENTS.md) for al-folio-specific build conventions.
 
@@ -180,7 +180,7 @@ Watch the **Deploy site** workflow at https://github.com/yh-v5/yh-v5.github.io/a
 The bib file lives at `_bibliography/papers.bib`. **Three entries**, each marked `selected: true`. Status as of 2026-09-28:
 
 1. **HyperSPACE (ISLPED '26) — published.** Accepted as a poster on 2026-05-19, presented in Evanston, IL (Aug 5–7, 2026). ACM DOI `10.1145/3816440.3818512`. Authors confirmed from the ACM DL notice: _Yeong Hwan Oh, Do Yeong Kang, Juhong Park, Chanwook Hwang, Kang Eun Jeon, Jong Hwan Ko_.
-2. **DiP-MEMHD / Multi-Centroid HDC for Compact IMC (IEEE IoT-J) — accepted/published 2026.** DOI `10.1109/JIOT.2026.3730047`. Volume/issue/pages not assigned yet — add them once the final issue is out. **Co-first authorship** (D. Y. Kang and Y. H. Oh) noted via `annotation`.
+2. **DiP-MEMHD / Multi-Centroid HDC for Compact IMC (IEEE IoT-J) — Early Access since 2026-09-02.** DOI `10.1109/JIOT.2026.3730047`. Volume/issue/pages not assigned yet — add them and drop `note = {Early Access}` once the final issue is out. **Co-first authorship** (D. Y. Kang and Y. H. Oh) noted via `annotation`.
 3. **MEMHD (DATE 2025) — published.** DOI `10.23919/DATE64628.2025.10993253`, pp. 1–7, arXiv `2502.07834`, Lyon, France.
 
 Still open: attach `pdf:` (file under `assets/pdf/`), `code:` URLs, and preview thumbnails (`assets/img/publication_preview/` + `preview:` field) if desired.
@@ -232,7 +232,7 @@ After any push to `main`, expect ~4 minutes until the site refreshes at https://
 1. Fill `_data/cv.yml` end-to-end and flip `_pages/cv.md` → `nav: true`.
 2. Add real `_projects/` entries (link MEMHD code repo if public, ditto HyperSPACE simulator).
 3. ~~Update **HyperSPACE** bib entry with the full author list once accepted.~~ Done (2026-09-28).
-4. Add IoT-J volume/issue/pages once assigned. Attach `pdf:` (place file under `assets/pdf/`) and `code:` URLs to the bib entries; preview thumbnails go in `assets/img/publication_preview/` and are referenced via the `preview:` field.
+4. Add IoT-J volume/issue/pages once assigned (and remove the `Early Access` note). Attach `pdf:` (place file under `assets/pdf/`) and `code:` URLs to the bib entries; preview thumbnails go in `assets/img/publication_preview/` and are referenced via the `preview:` field.
 5. Create a Google Scholar profile (if desired) and fill `scholar_userid` in `_data/socials.yml`.
 6. Decide whether to keep the slate/sky theme (`_sass/_themes.scss`) or pick something else. Other variables are in `_sass/_variables.scss`.
 7. Add a custom OG image distinct from the profile photo (1200×630 PNG) for richer social previews. Drop in `assets/img/og_image.png` and update `og_image:` in `_config.yml`.
