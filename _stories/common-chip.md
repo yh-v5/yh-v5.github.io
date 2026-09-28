@@ -1,7 +1,7 @@
 ---
 title: "Common Chip"
 title_ko: "보통 칩"
-num: "04"
+num: "05"
 year: 2025
 date: 2025-01-02
 description: "An ethicist paid to certify that the chips in everything feel nothing finds her daughter's toy pet has taught itself to wait."

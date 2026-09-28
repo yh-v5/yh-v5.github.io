@@ -1,7 +1,7 @@
 ---
 title: "The Last Digit"
 title_ko: "끝자리"
-num: "03"
+num: "04"
 year: 2025
 date: 2025-01-01
 description: "In a world that keeps time in floating point, an old reckoner finds that rounding error is the floor the mind stands on."
