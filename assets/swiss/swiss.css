@@ -1036,10 +1036,11 @@ dd {
   color: var(--ink-2);
   max-width: 38em;
 }
+/* the quoted line is a small epigraph: 60% of the 17px it started at */
 .st-line {
   font-family: var(--f-ko);
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 10.2px;
+  line-height: 1.7;
   word-break: keep-all;
 }
 .st-year {
