@@ -1,74 +1,18 @@
 /*
  * Neo-Swiss / blueprint theme for yh-v5.github.io
  *
- * International Typographic Style: a 12-column grid that can be shown on
- * demand, heavy grotesk headlines, tiny mono captions, and one accent colour.
+ * International Typographic Style: a 12-column grid, heavy grotesk headlines,
+ * tiny mono captions, and one accent colour. Dark (navy blueprint sheet) is the
+ * default; light is the same palette flipped. The header buttons switch them.
  * Lives outside assets/css/ so the deploy workflow's PurgeCSS step leaves it alone.
  */
 
 /* ── tokens ─────────────────────────────────────────────────────────────── */
 
+/* Dark (default): deep navy sheet, pale ink, light blue accent. */
 :root {
-  --paper: #f4f3ef;
-  --plate: #f4f3ef;
-  --ink: #0d0d0f;
-  --ink-2: #4e4f55;
-  --ink-3: #8b8c92;
-  --rule: #0d0d0f;
-  --hair: rgba(13, 13, 15, 0.14);
-  --blue: #1f3dff;
-  --blue-ink: #1f3dff;
-  --blue-wash: rgba(31, 61, 255, 0.07);
-  --tint-a: rgba(31, 61, 255, 0.78);
-  --tint-b: rgba(31, 61, 255, 0.5);
-  --tint-c: rgba(31, 61, 255, 0.28);
-  --tint-d: rgba(31, 61, 255, 0.13);
-  --grid-line: rgba(31, 61, 255, 0.38);
-  --grid-fill: rgba(31, 61, 255, 0.04);
-  --grid-row: rgba(31, 61, 255, 0.07);
-  --selection: rgba(31, 61, 255, 0.18);
-
-  --maxw: 1680px;
-  --pad: clamp(16px, 3.2vw, 56px);
-  --gut: clamp(12px, 1.7vw, 24px);
-  --cols: 12;
-
-  --f-sans: "Inter", "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", sans-serif;
-  --f-tight: "Inter Tight", "Pretendard Variable", Pretendard, "Inter", system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
-  --f-wide: "Archivo", "Inter Tight", "Pretendard Variable", Pretendard, system-ui, sans-serif;
-  --f-mono: "Space Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --f-ko: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-
-  color-scheme: light;
-}
-
-/* Blueprint = dark mode: navy sheet, pale ink, lighter blue. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0a1433;
-    --plate: #0c1840;
-    --ink: #eef1fb;
-    --ink-2: #b3bcd8;
-    --ink-3: #7e89ad;
-    --rule: #eef1fb;
-    --hair: rgba(238, 241, 251, 0.16);
-    --blue: #8fa4ff;
-    --blue-ink: #a9b8ff;
-    --blue-wash: rgba(143, 164, 255, 0.1);
-    --tint-a: rgba(143, 164, 255, 0.85);
-    --tint-b: rgba(143, 164, 255, 0.55);
-    --tint-c: rgba(143, 164, 255, 0.32);
-    --tint-d: rgba(143, 164, 255, 0.16);
-    --grid-line: rgba(143, 164, 255, 0.4);
-    --grid-fill: rgba(143, 164, 255, 0.05);
-    --grid-row: rgba(143, 164, 255, 0.08);
-    --selection: rgba(143, 164, 255, 0.3);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0a1433;
-  --plate: #0c1840;
+  --paper: #060d24;
+  --plate: #09122e;
   --ink: #eef1fb;
   --ink-2: #b3bcd8;
   --ink-3: #7e89ad;
@@ -81,11 +25,40 @@
   --tint-b: rgba(143, 164, 255, 0.55);
   --tint-c: rgba(143, 164, 255, 0.32);
   --tint-d: rgba(143, 164, 255, 0.16);
-  --grid-line: rgba(143, 164, 255, 0.4);
-  --grid-fill: rgba(143, 164, 255, 0.05);
-  --grid-row: rgba(143, 164, 255, 0.08);
   --selection: rgba(143, 164, 255, 0.3);
+
+  --maxw: 1680px;
+  --pad: clamp(16px, 3.2vw, 56px);
+  --gut: clamp(12px, 1.7vw, 24px);
+  --cols: 12;
+
+  --f-sans: "Inter", "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+  --f-tight: "Inter Tight", "Pretendard Variable", Pretendard, "Inter", system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  --f-wide: "Archivo", "Inter Tight", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  --f-mono: "Space Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --f-ko: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+
   color-scheme: dark;
+}
+
+/* Light: the dark palette flipped, pale blue-white sheet with navy ink. */
+:root[data-theme="light"] {
+  --paper: #eef1fb;
+  --plate: #e6eaf7;
+  --ink: #060d24;
+  --ink-2: #39436a;
+  --ink-3: #5f6a8f;
+  --rule: #060d24;
+  --hair: rgba(6, 13, 36, 0.16);
+  --blue: #2440e6;
+  --blue-ink: #1c35cc;
+  --blue-wash: rgba(36, 64, 230, 0.07);
+  --tint-a: rgba(36, 64, 230, 0.8);
+  --tint-b: rgba(36, 64, 230, 0.5);
+  --tint-c: rgba(36, 64, 230, 0.28);
+  --tint-d: rgba(36, 64, 230, 0.13);
+  --selection: rgba(36, 64, 230, 0.2);
+  color-scheme: light;
 }
 
 /* ── base ───────────────────────────────────────────────────────────────── */
@@ -211,42 +184,6 @@ dd {
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
   column-gap: var(--gut);
-}
-
-/* The grid is part of the concept: toggle it on to see how the page is built. */
-.grid-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  background-image: repeating-linear-gradient(to bottom, transparent 0 23px, var(--grid-row) 23px 24px);
-}
-.grid-overlay .wrap {
-  height: 100%;
-}
-.grid-overlay .g {
-  height: 100%;
-}
-.grid-overlay span {
-  position: relative;
-  border-left: 1px solid var(--grid-line);
-  border-right: 1px solid var(--grid-line);
-  background: var(--grid-fill);
-}
-.grid-overlay span::before {
-  content: attr(data-n);
-  position: absolute;
-  bottom: 8px;
-  left: 4px;
-  font-family: var(--f-mono);
-  font-size: 9px;
-  letter-spacing: 0.06em;
-  color: var(--blue-ink);
-}
-html.grid-on .grid-overlay {
-  opacity: 1;
 }
 
 /* ── header ─────────────────────────────────────────────────────────────── */
@@ -495,17 +432,11 @@ html.grid-on .grid-overlay {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   filter: grayscale(1) contrast(1.05);
-  mix-blend-mode: multiply;
-}
-:root[data-theme="dark"] .hero-photo img {
-  mix-blend-mode: normal;
   opacity: 0.92;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .hero-photo img {
-    mix-blend-mode: normal;
-    opacity: 0.92;
-  }
+:root[data-theme="light"] .hero-photo img {
+  mix-blend-mode: multiply;
+  opacity: 1;
 }
 .hero-photo figcaption {
   margin-top: 8px;
@@ -1246,9 +1177,6 @@ html.grid-on .grid-overlay {
   body {
     font-size: 15px;
   }
-  .grid-overlay span:nth-child(n + 5) {
-    display: none;
-  }
   .sh .g {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -1401,14 +1329,10 @@ html.grid-on .grid-overlay {
   html {
     scroll-behavior: auto;
   }
-  .grid-overlay {
-    transition: none;
-  }
 }
 
 @media print {
   .sh,
-  .grid-overlay,
   .ex-nav,
   .btn {
     display: none !important;
